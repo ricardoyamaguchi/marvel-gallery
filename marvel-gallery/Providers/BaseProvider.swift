@@ -15,7 +15,7 @@ class BaseProvider<T: Codable> {
     
     var endPoint: String { return "" }
     
-    static var header: Dictionary<String, String> {
+    static var header: [String: String] {
         return ["apikey": "0e3b7a907ce8ed9f13a5264d066221c6",
                 "hash": "d614f88508c79b7ba91d1a1201d0bba1",
                 "ts": "1"]

@@ -6,6 +6,7 @@ target 'marvel-gallery' do
   use_frameworks!
 
   pod 'Alamofire', '4.8.0'
+  pod 'SwiftLint'
 
   # Pods for marvel-gallery
 

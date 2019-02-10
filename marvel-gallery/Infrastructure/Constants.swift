@@ -10,5 +10,4 @@ import Foundation
 
 struct Constants {
     static let BaseURL = "https://gateway.marvel.com"
-    static let CharactersURL = "/v1/public/characters"
 }

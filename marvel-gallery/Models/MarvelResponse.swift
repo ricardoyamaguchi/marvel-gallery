@@ -24,14 +24,13 @@ struct DataClass<T: Codable>: Codable {
 }
 
 enum TypeEnum: String, Codable {
-    case cover = "cover"
-    case interiorStory = "interiorStory"
+    case cover
+    case interiorStory
 }
 
 struct Thumbnail: Codable {
     let path: String
     let thumbnailExtension: String
-    
     enum CodingKeys: String, CodingKey {
         case path
         case thumbnailExtension = "extension"
