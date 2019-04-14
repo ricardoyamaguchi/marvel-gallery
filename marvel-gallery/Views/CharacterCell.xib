@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Action Man.ttf">
+            <string>ActionMan</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="DMe-F1-7oN" customClass="CharacterCell" customModule="marvel_gallery" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DMe-F1-7oN" id="Oe1-we-j1C">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="44.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hZ1-Bh-FeP" customClass="CustomImageView" customModule="marvel_gallery" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="65" height="44.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="65" id="XZR-6d-Ow4"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L0Q-xH-6Bx">
+                        <rect key="frame" x="0.0" y="0.0" width="65" height="44.5"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Md-cU-CaL">
+                        <rect key="frame" x="73" y="15.5" width="333" height="14"/>
+                        <fontDescription key="fontDescription" name="ActionMan" family="Action Man" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="L0Q-xH-6Bx" firstAttribute="centerY" secondItem="hZ1-Bh-FeP" secondAttribute="centerY" id="9o1-cS-1jE"/>
+                    <constraint firstItem="9Md-cU-CaL" firstAttribute="centerY" secondItem="Oe1-we-j1C" secondAttribute="centerY" id="Jlk-gX-2pr"/>
+                    <constraint firstItem="L0Q-xH-6Bx" firstAttribute="centerX" secondItem="hZ1-Bh-FeP" secondAttribute="centerX" id="UhZ-pL-Zps"/>
+                    <constraint firstItem="L0Q-xH-6Bx" firstAttribute="width" secondItem="hZ1-Bh-FeP" secondAttribute="width" id="YRb-pL-b3K"/>
+                    <constraint firstAttribute="bottom" secondItem="hZ1-Bh-FeP" secondAttribute="bottom" id="d1V-i0-A3e"/>
+                    <constraint firstItem="hZ1-Bh-FeP" firstAttribute="leading" secondItem="Oe1-we-j1C" secondAttribute="leading" id="d9d-rA-3sC"/>
+                    <constraint firstItem="L0Q-xH-6Bx" firstAttribute="height" secondItem="hZ1-Bh-FeP" secondAttribute="height" id="haH-kO-yUI"/>
+                    <constraint firstItem="9Md-cU-CaL" firstAttribute="leading" secondItem="hZ1-Bh-FeP" secondAttribute="trailing" constant="8" id="nSE-XY-m15"/>
+                    <constraint firstAttribute="trailing" secondItem="9Md-cU-CaL" secondAttribute="trailing" constant="8" id="upX-iV-Q74"/>
+                    <constraint firstItem="hZ1-Bh-FeP" firstAttribute="top" secondItem="Oe1-we-j1C" secondAttribute="top" id="vpA-lL-6Yy"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="charImageView" destination="hZ1-Bh-FeP" id="e1B-n3-r0T"/>
+                <outlet property="imageShimmeringView" destination="L0Q-xH-6Bx" id="47j-vV-7cY"/>
+                <outlet property="nameLabel" destination="9Md-cU-CaL" id="MFh-Yy-fiP"/>
+            </connections>
+            <point key="canvasLocation" x="154" y="-171"/>
+        </tableViewCell>
+    </objects>
+</document>

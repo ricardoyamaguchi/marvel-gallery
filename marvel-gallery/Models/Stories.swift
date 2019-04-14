@@ -9,14 +9,14 @@
 import Foundation
 
 struct Stories: Codable {
-    let available: Int
-    let collectionURI: String
-    let items: [StoriesItem]
-    let returned: Int
+    let available: Int?
+    let collectionURI: String?
+    let items: [StoriesItem]?
+    let returned: Int?
 }
 
 struct StoriesItem: Codable {
-    let resourceURI: String
-    let name: String
-    let type: TypeEnum
+    let resourceURI: String?
+    let name: String?
+    let type: String?
 }

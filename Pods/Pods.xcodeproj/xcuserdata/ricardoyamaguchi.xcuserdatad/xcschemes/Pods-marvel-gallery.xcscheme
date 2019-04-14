@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1010"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4B08E81CA099D4A6CB5ACCE8D44E2ED5"
+               BlueprintIdentifier = "48D7D178AA3C3395458A3009A0DE7E11"
                BuildableName = "Pods_marvel_gallery.framework"
                BlueprintName = "Pods-marvel-gallery"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4B08E81CA099D4A6CB5ACCE8D44E2ED5"
+            BlueprintIdentifier = "48D7D178AA3C3395458A3009A0DE7E11"
             BuildableName = "Pods_marvel_gallery.framework"
             BlueprintName = "Pods-marvel-gallery"
             ReferencedContainer = "container:Pods.xcodeproj">
