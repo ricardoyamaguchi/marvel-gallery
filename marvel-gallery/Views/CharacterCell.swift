@@ -21,7 +21,7 @@ class CharacterCell: UITableViewCell {
     private var imageShimmer = FBShimmeringView()
     
     var path: String = ""
-    var containerView: UIView?
+    var rootContainer: CharactersViewController?
     
     var name: String? {
         didSet {
@@ -41,8 +41,9 @@ class CharacterCell: UITableViewCell {
         configShimmering()
     }
     
-    func moveImage(to position: CGPoint, size: CGSize) {
-        let imageView = createCopyImage()
+    func openCharacterEffect(to position: CGPoint, size: CGSize) {
+        let imageView = copyImageView()
+        charImageView?.alpha = 0
         UIView.animate(withDuration: 0.3) {
             imageView?.frame = CGRect(x: position.x,
                                       y: position.y,
@@ -51,7 +52,21 @@ class CharacterCell: UITableViewCell {
         }
     }
     
-    private func createCopyImage() -> UIImageView? {
+    @objc
+    func closeCharacterEffect() {
+        guard let targetPosition = rootContainer?.openImageViewOrigin, let size = charImageView?.frame.size else { return }
+        UIView.animate(withDuration: 0.3, animations: {
+            self.rootContainer?.openImageView.frame = CGRect(x: targetPosition.x,
+                                                             y: targetPosition.y,
+                                                             width: size.width ,
+                                                             height: size.height)
+        }, completion: { _ in
+            self.charImageView?.alpha = 1
+            self.rootContainer?.openImageView.removeFromSuperview()
+        })
+    }
+    
+    private func copyImageView() -> UIImageView? {
         guard let frame = charImageView?.frame else { return nil }
         let point = findImageAbsPosition()
         let imageView = UIImageView(frame: CGRect(x: point.x,
@@ -60,7 +75,14 @@ class CharacterCell: UITableViewCell {
                                                   height: frame.height))
         
         imageView.image = charImageView?.image
-        containerView?.addSubview(imageView)
+        imageView.isUserInteractionEnabled = true
+        imageView.contentMode = charImageView?.contentMode ?? .scaleAspectFill
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(closeCharacterEffect))
+        imageView.addGestureRecognizer(gesture)
+        rootContainer?.openImageViewOrigin = point
+        rootContainer?.openImageView = imageView
+        rootContainer?.view.addSubview(imageView)
         return imageView
     }
     

@@ -37,7 +37,7 @@ class CharactersViewModel {
         if let data = cachedDataImages[path] {
             completion(path, data)
         } else {
-            imageProvider.fetchStandardXlargeImage(from: path,
+            imageProvider.fetchStandardFantasticImage(from: path,
                                                   type: thumbnail.type ?? .jpg) { [weak self] imageData in
                                                     guard let data = imageData else { return }
                                                     self?.cachedDataImages[path] = data

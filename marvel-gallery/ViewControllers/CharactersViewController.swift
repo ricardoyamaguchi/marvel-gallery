@@ -16,6 +16,8 @@ class CharactersViewController: UIViewController {
     
     private let viewModel = CharactersViewModel()
     private var cachedImages: [String: UIImage] = [:]
+    var openImageView = UIImageView()
+    var openImageViewOrigin = CGPoint()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,8 +55,8 @@ class CharactersViewController: UIViewController {
 extension CharactersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        guard let cell = tableView.cellForRow(at: indexPath) as? CharacterCell else { return }
-        cell.moveImage(to: CGPoint(x: 0, y: 0), size: targetSize())
+        guard let cell = tableView.cellForRow(at: indexPath) as? CharacterCell, let y = navigationController?.navigationBar.frame.size.height else { return }
+        cell.openCharacterEffect(to: CGPoint(x: 0, y: y), size: targetSize())
     }
     
     private func targetSize() -> CGSize {
@@ -76,7 +78,7 @@ extension CharactersViewController: UITableViewDataSource {
         cell.name = character.name
         cell.charImage = nil
         cell.path = character.thumbnail?.path ?? ""
-        cell.containerView = view
+        cell.rootContainer = self
         viewModel.fetchImage(index: indexPath.row) { path, data in
             if path == cell.path {
                 let image = UIImage(data: data)

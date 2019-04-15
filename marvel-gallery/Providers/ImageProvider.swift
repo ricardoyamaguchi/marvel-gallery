@@ -30,6 +30,12 @@ class ImageProvider {
         }
     }
 
+    func fetchStandardFantasticImage(from path: String, type: ImageType, completion: @escaping ImageCallback) {
+        fetchImage(from: path, size: .standardFantastic, type: type) { data in
+            completion(data)
+        }
+    }
+    
     private func fetchImage(from path: String, size: ImageSize, type: ImageType, callback: @escaping ImageCallback) {
         guard let url = URL(string: "\(path)/\(size.rawValue).\(type.rawValue)") else { return }
         let task = URLSession.shared.dataTask(with: url) { (responseData, _, _) -> Void in
