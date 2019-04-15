@@ -12,7 +12,25 @@ typealias ImageCallback = (Data?) -> Void
 
 class ImageProvider {
     
-    static func fetchImage(from path: String, size: ImageSize, type: ImageType, callback: @escaping ImageCallback) {
+    func fetchStandardSmallImage(from path: String, type: ImageType, completion: @escaping ImageCallback) {
+        fetchImage(from: path, size: .standardSmall, type: type) { data in
+            completion(data)
+        }
+    }
+
+    func fetchStandardMediumImage(from path: String, type: ImageType, completion: @escaping ImageCallback) {
+        fetchImage(from: path, size: .standardMedium, type: type) { data in
+            completion(data)
+        }
+    }
+
+    func fetchStandardXlargeImage(from path: String, type: ImageType, completion: @escaping ImageCallback) {
+        fetchImage(from: path, size: .standardXlarge, type: type) { data in
+            completion(data)
+        }
+    }
+
+    private func fetchImage(from path: String, size: ImageSize, type: ImageType, callback: @escaping ImageCallback) {
         guard let url = URL(string: "\(path)/\(size.rawValue).\(type.rawValue)") else { return }
         let task = URLSession.shared.dataTask(with: url) { (responseData, _, _) -> Void in
             if let data = responseData {

@@ -18,8 +18,10 @@ class CharacterCell: UITableViewCell {
     @IBOutlet private weak var nameLabel: UILabel?
     @IBOutlet weak var imageShimmeringView: UIView?
     
-    var thumbnail: Thumbnail?
-    var imageShimmer = FBShimmeringView()
+    private var imageShimmer = FBShimmeringView()
+    
+    var path: String = ""
+    var containerView: UIView?
     
     var name: String? {
         didSet {
@@ -39,7 +41,38 @@ class CharacterCell: UITableViewCell {
         configShimmering()
     }
     
+    func moveImage(to position: CGPoint, size: CGSize) {
+        let imageView = createCopyImage()
+        UIView.animate(withDuration: 0.3) {
+            imageView?.frame = CGRect(x: position.x,
+                                      y: position.y,
+                                      width: size.width,
+                                      height: size.height)
+        }
+    }
+    
+    private func createCopyImage() -> UIImageView? {
+        guard let frame = charImageView?.frame else { return nil }
+        let point = findImageAbsPosition()
+        let imageView = UIImageView(frame: CGRect(x: point.x,
+                                                  y: point.y,
+                                                  width: frame.width,
+                                                  height: frame.height))
+        
+        imageView.image = charImageView?.image
+        containerView?.addSubview(imageView)
+        return imageView
+    }
+    
+    private func findImageAbsPosition() -> CGPoint {
+        guard let point = charImageView?.bounds.origin else {
+            return CGPoint(x: 0, y: 0)
+        }
+        return contentView.convert(point, to: nil)
+    }
+    
     private func configShimmering() {
+        imageShimmer.removeFromSuperview()
         imageShimmer = FBShimmeringView(frame: imageShimmeringView?.bounds ?? bounds)
         imageShimmer.shimmeringOpacity = 1
         imageShimmer.shimmeringSpeed = shimmeringSpeed

@@ -14,89 +14,82 @@ class CharactersViewController: UIViewController {
     @IBOutlet private weak var loadingView: UIView?
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView?
     
-    private let provider = CharactersProvider()
-    private var characters: [Character] = []
+    private let viewModel = CharactersViewModel()
     private var cachedImages: [String: UIImage] = [:]
-    private var total = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
+        bindElements()
         fetchCharacters()
     }
     
+    private func fetchCharacters() {
+        loadingView?.isHidden = false
+        activityIndicator?.startAnimating()
+        viewModel.fetchCharacters()
+    }
+    
     private func configTableView() {
-        tableView?.register(UINib(nibName: "CharacterCell", bundle: nil),
-                            forCellReuseIdentifier: "CharCell")
+        tableView?.register(UINib(nibName: "CharacterCell", bundle: nil), forCellReuseIdentifier: "CharCell")
         tableView?.dataSource = self
         tableView?.delegate = self
     }
     
-    private func fetchCharacters() {
-        activityIndicator?.startAnimating()
-        loadingView?.isHidden = false
-        provider.getList(offset: characters.count) {[weak self] result in
-            guard let data = result, let results = data.results  else { self?.stopLoading(); return }
-            self?.total = data.total ?? 0
-            self?.updateData(results)
-        }
-    }
-    
-    private func updateData(_ result: [Character]) {
-        characters.append(contentsOf: result)
+    private func updateData() {
         tableView?.reloadData()
-        stopLoading()
-    }
-    
-    private func stopLoading() {
         activityIndicator?.stopAnimating()
         loadingView?.isHidden = true
+    }
+    
+    private func bindElements() {
+        viewModel.data.bind { [weak self] _ in
+            self?.updateData()
+        }
     }
 
 }
 
 extension CharactersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("item selected")
+        tableView.deselectRow(at: indexPath, animated: false)
+        guard let cell = tableView.cellForRow(at: indexPath) as? CharacterCell else { return }
+        cell.moveImage(to: CGPoint(x: 0, y: 0), size: targetSize())
+    }
+    
+    private func targetSize() -> CGSize {
+        let screenSize = UIScreen.main.bounds
+        return CGSize(width: screenSize.width, height: screenSize.width)
     }
 }
 
 extension CharactersViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return characters.count
+        return viewModel.characters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CharCell") as? CharacterCell else { return UITableViewCell() }
         
-        let character = characters[indexPath.row]
-        
+        let character = viewModel.characters[indexPath.row]
         cell.name = character.name
-        cell.thumbnail = character.thumbnail
         cell.charImage = nil
+        cell.path = character.thumbnail?.path ?? ""
+        cell.containerView = view
+        viewModel.fetchImage(index: indexPath.row) { path, data in
+            if path == cell.path {
+                let image = UIImage(data: data)
+                cell.charImage = image
+            }
+        }
         
-        downloadImage(into: cell)
-        
-        if indexPath.row == characters.count - 2, characters.count < total {
+        let count = viewModel.characters.count
+        if indexPath.row == count - 2, count < viewModel.total {
             fetchCharacters()
         }
         
         return cell
     }
     
-    private func downloadImage(into cell: CharacterCell) {
-        guard let path = cell.thumbnail?.path else { return }
-        if let image = cachedImages[path] {
-            cell.charImage = image
-        } else {
-            ImageProvider.fetchImage(from: path,
-                                     size: .standardSmall,
-                                     type: cell.thumbnail?.type ?? .jpg) { [weak self] imageData in
-                                        guard let data = imageData, let image = UIImage(data: data) else { return }
-                                        cell.charImage = image
-                                        self?.cachedImages[path] = image
-            }
-        }
-    }
 }

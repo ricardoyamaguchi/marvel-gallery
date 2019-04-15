@@ -29,6 +29,8 @@
 		0A97F18F220D29ED00537076 /* Comics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97F18E220D29ED00537076 /* Comics.swift */; };
 		0A97F191220D2BC300537076 /* Stories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97F190220D2BC300537076 /* Stories.swift */; };
 		0A9BB8182259901A001D3DF1 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BB8172259901A001D3DF1 /* ImageProvider.swift */; };
+		0A9BB81D2262D437001D3DF1 /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BB81C2262D437001D3DF1 /* CharactersViewModel.swift */; };
+		0A9BB81F226401C0001D3DF1 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BB81E226401C0001D3DF1 /* Dynamic.swift */; };
 		0ABAC25C2207BDEF00C6B792 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABAC25B2207BDEF00C6B792 /* AppDelegate.swift */; };
 		0ABAC25E2207BDEF00C6B792 /* CharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABAC25D2207BDEF00C6B792 /* CharactersViewController.swift */; };
 		0ABAC2612207BDEF00C6B792 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABAC25F2207BDEF00C6B792 /* Main.storyboard */; };
@@ -81,6 +83,8 @@
 		0A97F18E220D29ED00537076 /* Comics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comics.swift; sourceTree = "<group>"; };
 		0A97F190220D2BC300537076 /* Stories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stories.swift; sourceTree = "<group>"; };
 		0A9BB8172259901A001D3DF1 /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
+		0A9BB81C2262D437001D3DF1 /* CharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModel.swift; sourceTree = "<group>"; };
+		0A9BB81E226401C0001D3DF1 /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
 		0ABAC2582207BDEF00C6B792 /* marvel-gallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "marvel-gallery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ABAC25B2207BDEF00C6B792 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0ABAC25D2207BDEF00C6B792 /* CharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +186,14 @@
 			path = Providers;
 			sourceTree = "<group>";
 		};
+		0A9BB81B2262D3C7001D3DF1 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0A9BB81C2262D437001D3DF1 /* CharactersViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		0ABAC24F2207BDEF00C6B792 = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +227,7 @@
 				0ABAC28C2207BE3800C6B792 /* Infrastructure */,
 				0ABAC28B2207BE1E00C6B792 /* Models */,
 				0ABAC28A2207BE1100C6B792 /* ViewControllers */,
+				0A9BB81B2262D3C7001D3DF1 /* ViewModels */,
 				0ABAC2892207BE0400C6B792 /* Storyboards */,
 				0A07F9902251B184004FE625 /* fonts */,
 				0ABAC25B2207BDEF00C6B792 /* AppDelegate.swift */,
@@ -273,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				0A97F1812207C8CC00537076 /* Constants.swift */,
+				0A9BB81E226401C0001D3DF1 /* Dynamic.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -563,8 +577,10 @@
 				0ABAC25E2207BDEF00C6B792 /* CharactersViewController.swift in Sources */,
 				0A9111F92214FD2500CB267A /* CustomImageView.swift in Sources */,
 				0ABAC25C2207BDEF00C6B792 /* AppDelegate.swift in Sources */,
+				0A9BB81F226401C0001D3DF1 /* Dynamic.swift in Sources */,
 				0A07F98F22519BCD004FE625 /* CharacterCell.swift in Sources */,
 				0A97F1822207C8CC00537076 /* Constants.swift in Sources */,
+				0A9BB81D2262D437001D3DF1 /* CharactersViewModel.swift in Sources */,
 				0A97F191220D2BC300537076 /* Stories.swift in Sources */,
 				0A97F1852207EDD300537076 /* BaseProvider.swift in Sources */,
 				0A97F18B220D171E00537076 /* MarvelResponse.swift in Sources */,
