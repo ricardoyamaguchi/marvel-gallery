@@ -55,13 +55,24 @@ class CharactersViewController: UIViewController {
 extension CharactersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        animateImage(tableView: tableView, indexPath: indexPath)
+        pushToDetails()
+    }
+    
+    private func animateImage(tableView: UITableView, indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? CharacterCell, let y = navigationController?.navigationBar.frame.size.height else { return }
-        cell.openCharacterEffect(to: CGPoint(x: 0, y: y), size: targetSize())
+        let size = targetSize()
+        let x = UIScreen.main.bounds.width - (size.width / 2)
+        cell.openCharacterEffect(to: CGPoint(x: x, y: y), size: size)
+
     }
     
     private func targetSize() -> CGSize {
-        let screenSize = UIScreen.main.bounds
-        return CGSize(width: screenSize.width, height: screenSize.width)
+        return CGSize(width: 250.0, height: 250.0)
+    }
+    
+    private func pushToDetails() {
+        
     }
 }
 

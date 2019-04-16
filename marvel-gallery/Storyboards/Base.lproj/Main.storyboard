@@ -98,11 +98,40 @@
                         <outlet property="activityIndicator" destination="AfE-sd-SaP" id="co2-pL-ePJ"/>
                         <outlet property="loadingView" destination="bph-M1-g3l" id="GlA-Gc-6bc"/>
                         <outlet property="tableView" destination="lfE-3a-B1t" id="pBt-HK-7yo"/>
+                        <segue destination="SHV-u5-iHu" kind="show" id="stf-Gb-egS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="977" y="-564"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="UWu-kD-LxD">
+            <objects>
+                <viewController id="SHV-u5-iHu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZXS-EV-rfY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ol1-B9-td1">
+                                <rect key="frame" x="62.5" y="64" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="HhG-t7-fQV"/>
+                                    <constraint firstAttribute="height" constant="250" id="cnI-bz-dGa"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ol1-B9-td1" firstAttribute="top" secondItem="DmQ-r7-18I" secondAttribute="top" id="BYv-zp-jj8"/>
+                            <constraint firstItem="ol1-B9-td1" firstAttribute="centerX" secondItem="DmQ-r7-18I" secondAttribute="centerX" id="L28-S8-DJA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DmQ-r7-18I"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FzA-JT-U5d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1830" y="-564"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WUI-KD-pck">
