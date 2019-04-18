@@ -62,8 +62,8 @@ extension CharactersViewController: UITableViewDelegate {
     private func animateImage(tableView: UITableView, indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? CharacterCell, let y = navigationController?.navigationBar.frame.size.height else { return }
         let size = targetSize()
-        let x = UIScreen.main.bounds.width - (size.width / 2)
-        cell.openCharacterEffect(to: CGPoint(x: x, y: y), size: size)
+        let x = (UIScreen.main.bounds.width / 2) - (size.width / 2)
+        cell.openCharacterEffect(to: CGPoint(x: x, y: y + 20), size: size)
 
     }
     
