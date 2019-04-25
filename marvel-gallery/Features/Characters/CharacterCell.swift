@@ -41,14 +41,16 @@ class CharacterCell: UITableViewCell {
         configShimmering()
     }
     
-    func openCharacterEffect(to position: CGPoint, size: CGSize) {
+    func openCharacterEffect(to position: CGPoint, size: CGSize, completion: @escaping () -> Void) {
         let imageView = copyImageView()
         charImageView?.alpha = 0
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.3, animations: {
             imageView?.frame = CGRect(x: position.x,
                                       y: position.y,
                                       width: size.width,
                                       height: size.height)
+        }) { _ in
+            completion()
         }
     }
     

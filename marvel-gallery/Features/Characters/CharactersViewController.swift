@@ -56,15 +56,15 @@ extension CharactersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         animateImage(tableView: tableView, indexPath: indexPath)
-        pushToDetails()
     }
     
     private func animateImage(tableView: UITableView, indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? CharacterCell, let y = navigationController?.navigationBar.frame.size.height else { return }
         let size = targetSize()
-        let x = UIScreen.main.bounds.width - (size.width / 2)
-        cell.openCharacterEffect(to: CGPoint(x: x, y: y), size: size)
-
+        let x = (UIScreen.main.bounds.width / 2) - (size.width / 2)
+        cell.openCharacterEffect(to: CGPoint(x: x, y: y + 20), size: size) {
+            self.pushToDetails()
+        }
     }
     
     private func targetSize() -> CGSize {
@@ -72,7 +72,8 @@ extension CharactersViewController: UITableViewDelegate {
     }
     
     private func pushToDetails() {
-        
+        let details = CharacterDetailViewController.instantiate()
+        navigationController?.pushViewController(details, animated: true)
     }
 }
 

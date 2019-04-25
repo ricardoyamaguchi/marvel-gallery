@@ -108,7 +108,7 @@
         <!--View Controller-->
         <scene sceneID="UWu-kD-LxD">
             <objects>
-                <viewController id="SHV-u5-iHu" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CharacterDetailViewController" id="SHV-u5-iHu" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZXS-EV-rfY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
