@@ -19,13 +19,14 @@ class CharacterCell: UITableViewCell {
     @IBOutlet weak var imageShimmeringView: UIView?
     
     private var imageShimmer = FBShimmeringView()
+    private var path: String = ""
     
-    var path: String = ""
     var rootContainer: CharactersViewController?
     
-    var name: String? {
+    var character: Character? {
         didSet {
-            nameLabel?.text = name
+            path = character?.thumbnail?.path ?? ""
+            nameLabel?.text = character?.name
         }
     }
     
@@ -85,6 +86,7 @@ class CharacterCell: UITableViewCell {
         rootContainer?.openImageViewOrigin = point
         rootContainer?.openImageView = imageView
         rootContainer?.view.addSubview(imageView)
+        
         return imageView
     }
     

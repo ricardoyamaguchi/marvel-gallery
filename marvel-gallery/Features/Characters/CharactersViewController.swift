@@ -55,15 +55,15 @@ class CharactersViewController: UIViewController {
 extension CharactersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        animateImage(tableView: tableView, indexPath: indexPath)
+        push(tableView: tableView, indexPath: indexPath)
     }
 
-    private func animateImage(tableView: UITableView, indexPath: IndexPath) {
+    private func push(tableView: UITableView, indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? CharacterCell, let y = navigationController?.navigationBar.frame.size.height else { return }
         let size = targetSize()
         let x = (UIScreen.main.bounds.width / 2) - (size.width / 2)
         cell.openCharacterEffect(to: CGPoint(x: x, y: y + 20), size: size) {
-            self.pushToDetails()
+            self.pushToDetails(indexPath)
         }
     }
 
@@ -71,9 +71,18 @@ extension CharactersViewController: UITableViewDelegate {
         return CGSize(width: 250.0, height: 250.0)
     }
 
-    private func pushToDetails() {
+    private func pushToDetails(_ indexPath: IndexPath) {
         let details = CharacterDetailViewController.instantiate()
-        navigationController?.pushViewController(details, animated: true)
+        details.charImage = openImageView.image
+        details.character = viewModel.characters[indexPath.row]
+        
+        let transition = CATransition()
+        transition.duration = 0.3
+        transition.type = .fade
+        transition.subtype = .fromBottom
+        
+        view.window?.layer.add(transition, forKey: kCATransition)
+        navigationController?.present(details, animated: false)
     }
 }
 
@@ -86,13 +95,11 @@ extension CharactersViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CharCell") as? CharacterCell else { return UITableViewCell() }
 
-        let character = viewModel.characters[indexPath.row]
-        cell.name = character.name
+        cell.character = viewModel.characters[indexPath.row]
         cell.charImage = nil
-        cell.path = character.thumbnail?.path ?? ""
         cell.rootContainer = self
         viewModel.fetchImage(index: indexPath.row) { path, data in
-            if path == cell.path {
+            if path == cell.character?.thumbnail?.path {
                 let image = UIImage(data: data)
                 cell.charImage = image
             }
