@@ -14,7 +14,7 @@ class CharacterCell: UITableViewCell {
 
     private let shimmeringSpeed: CGFloat = 115
     
-    @IBOutlet private weak var charImageView: CustomImageView?
+    @IBOutlet private weak var charImageView: UIImageView?
     @IBOutlet private weak var nameLabel: UILabel?
     @IBOutlet weak var imageShimmeringView: UIView?
     
@@ -50,20 +50,22 @@ class CharacterCell: UITableViewCell {
                                       y: position.y,
                                       width: size.width,
                                       height: size.height)
-        }) { _ in
+        }, completion: { _ in
             completion()
-        }
+        })
     }
     
     @objc
     func closeCharacterEffect() {
         guard let targetPosition = rootContainer?.openImageViewOrigin, let size = charImageView?.frame.size else { return }
+        rootContainer?.view.isUserInteractionEnabled = false
         UIView.animate(withDuration: 0.3, animations: {
             self.rootContainer?.openImageView.frame = CGRect(x: targetPosition.x,
                                                              y: targetPosition.y,
                                                              width: size.width ,
                                                              height: size.height)
         }, completion: { _ in
+            self.rootContainer?.view.isUserInteractionEnabled = true
             self.charImageView?.alpha = 1
             self.rootContainer?.openImageView.removeFromSuperview()
         })

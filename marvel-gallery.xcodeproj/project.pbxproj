@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A07F98D22519AC8004FE625 /* CharacterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A07F98C22519AC8004FE625 /* CharacterCell.xib */; };
 		0A07F98F22519BCD004FE625 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A07F98E22519BCD004FE625 /* CharacterCell.swift */; };
 		0A07F99B2251B87F004FE625 /* Action Man Bold Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A07F9952251B1C0004FE625 /* Action Man Bold Italic.ttf */; };
 		0A07F99C2251B882004FE625 /* Action Man Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A07F99A2251B1C1004FE625 /* Action Man Bold.ttf */; };
@@ -19,12 +18,13 @@
 		0A07F9A22251B887004FE625 /* Action Man Shaded Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A07F9982251B1C0004FE625 /* Action Man Shaded Italic.ttf */; };
 		0A07F9A32251B887004FE625 /* Action Man Shaded.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A07F9942251B1C0004FE625 /* Action Man Shaded.ttf */; };
 		0A07F9A42251B887004FE625 /* Action Man.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A07F9962251B1C0004FE625 /* Action Man.ttf */; };
+		0A507EA72279E62F00DF08F6 /* Characters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A507EA52279E62F00DF08F6 /* Characters.storyboard */; };
+		0A507EA82279E69400DF08F6 /* CharacterCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = 0A07F98C22519AC8004FE625 /* CharacterCell.xib */; };
 		0A75DB3F226D2932006A5E3D /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A75DB3E226D2932006A5E3D /* CharacterDetailViewController.swift */; };
 		0A75DB41226D2F7B006A5E3D /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A75DB40226D2F7B006A5E3D /* CharacterDetailViewModel.swift */; };
 		0A75DB45226D32EC006A5E3D /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A75DB44226D32EC006A5E3D /* UIStoryboard.swift */; };
 		0A75DB49226D36FC006A5E3D /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A75DB48226D36FC006A5E3D /* UIViewController.swift */; };
 		0A9111F6220FC39E00CB267A /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 0A9111F5220FC39E00CB267A /* .swiftlint.yml */; };
-		0A9111F92214FD2500CB267A /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9111F82214FD2500CB267A /* CustomImageView.swift */; };
 		0A97F1822207C8CC00537076 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97F1812207C8CC00537076 /* Constants.swift */; };
 		0A97F1852207EDD300537076 /* BaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97F1842207EDD300537076 /* BaseProvider.swift */; };
 		0A97F1892209249C00537076 /* CharactersProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97F1882209249C00537076 /* CharactersProvider.swift */; };
@@ -37,7 +37,6 @@
 		0A9BB81F226401C0001D3DF1 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BB81E226401C0001D3DF1 /* Dynamic.swift */; };
 		0ABAC25C2207BDEF00C6B792 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABAC25B2207BDEF00C6B792 /* AppDelegate.swift */; };
 		0ABAC25E2207BDEF00C6B792 /* CharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABAC25D2207BDEF00C6B792 /* CharactersViewController.swift */; };
-		0ABAC2612207BDEF00C6B792 /* Characters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABAC25F2207BDEF00C6B792 /* Characters.storyboard */; };
 		0ABAC2662207BDF200C6B792 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABAC2642207BDF200C6B792 /* LaunchScreen.storyboard */; };
 		0ABAC2712207BDF200C6B792 /* marvel_galleryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABAC2702207BDF200C6B792 /* marvel_galleryTests.swift */; };
 		0ABAC27C2207BDF200C6B792 /* marvel_galleryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABAC27B2207BDF200C6B792 /* marvel_galleryUITests.swift */; };
@@ -77,17 +76,17 @@
 		0A07F9982251B1C0004FE625 /* Action Man Shaded Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Action Man Shaded Italic.ttf"; sourceTree = "<group>"; };
 		0A07F9992251B1C0004FE625 /* Action Man Extended Bold Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Action Man Extended Bold Italic.ttf"; sourceTree = "<group>"; };
 		0A07F99A2251B1C1004FE625 /* Action Man Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Action Man Bold.ttf"; sourceTree = "<group>"; };
+		0A507EA62279E62F00DF08F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Characters.storyboard; sourceTree = "<group>"; };
 		0A75DB3E226D2932006A5E3D /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
 		0A75DB40226D2F7B006A5E3D /* CharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModel.swift; sourceTree = "<group>"; };
 		0A75DB44226D32EC006A5E3D /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
 		0A75DB48226D36FC006A5E3D /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		0A9111F5220FC39E00CB267A /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
-		0A9111F82214FD2500CB267A /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		0A97F1812207C8CC00537076 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0A97F1842207EDD300537076 /* BaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProvider.swift; sourceTree = "<group>"; };
 		0A97F1882209249C00537076 /* CharactersProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersProvider.swift; sourceTree = "<group>"; };
 		0A97F18A220D171E00537076 /* MarvelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelResponse.swift; sourceTree = "<group>"; };
-		0A97F18C220D1CB000537076 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		0A97F18C220D1CB000537076 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Character.swift; path = ../../Models/Character.swift; sourceTree = "<group>"; };
 		0A97F18E220D29ED00537076 /* Comics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comics.swift; sourceTree = "<group>"; };
 		0A97F190220D2BC300537076 /* Stories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stories.swift; sourceTree = "<group>"; };
 		0A9BB8172259901A001D3DF1 /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
@@ -96,7 +95,6 @@
 		0ABAC2582207BDEF00C6B792 /* marvel-gallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "marvel-gallery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ABAC25B2207BDEF00C6B792 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0ABAC25D2207BDEF00C6B792 /* CharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewController.swift; sourceTree = "<group>"; };
-		0ABAC2602207BDEF00C6B792 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Characters.storyboard; sourceTree = "<group>"; };
 		0ABAC2652207BDF200C6B792 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0ABAC2672207BDF200C6B792 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0ABAC26C2207BDF200C6B792 /* marvel-galleryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "marvel-galleryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +169,8 @@
 		0A75DB43226D2FC9006A5E3D /* Characters */ = {
 			isa = PBXGroup;
 			children = (
+				0A507EA52279E62F00DF08F6 /* Characters.storyboard */,
+				0A97F18C220D1CB000537076 /* Character.swift */,
 				0A07F98C22519AC8004FE625 /* CharacterCell.xib */,
 				0A07F98E22519BCD004FE625 /* CharacterCell.swift */,
 				0A97F1882209249C00537076 /* CharactersProvider.swift */,
@@ -194,7 +194,6 @@
 		0A9111FA221503B300CB267A /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				0A9111F82214FD2500CB267A /* CustomImageView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -240,7 +239,6 @@
 				0A97F1832207EDC200537076 /* Providers */,
 				0ABAC28C2207BE3800C6B792 /* Infrastructure */,
 				0ABAC28B2207BE1E00C6B792 /* Models */,
-				0ABAC2892207BE0400C6B792 /* Storyboards */,
 				0A07F9902251B184004FE625 /* fonts */,
 				0ABAC25B2207BDEF00C6B792 /* AppDelegate.swift */,
 				0ABAC2642207BDF200C6B792 /* LaunchScreen.storyboard */,
@@ -267,18 +265,9 @@
 			path = "marvel-galleryUITests";
 			sourceTree = "<group>";
 		};
-		0ABAC2892207BE0400C6B792 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				0ABAC25F2207BDEF00C6B792 /* Characters.storyboard */,
-			);
-			path = Storyboards;
-			sourceTree = "<group>";
-		};
 		0ABAC28B2207BE1E00C6B792 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0A97F18C220D1CB000537076 /* Character.swift */,
 				0A97F18A220D171E00537076 /* MarvelResponse.swift */,
 				0A97F18E220D29ED00537076 /* Comics.swift */,
 				0A97F190220D2BC300537076 /* Stories.swift */,
@@ -431,10 +420,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A07F99C2251B882004FE625 /* Action Man Bold.ttf in Resources */,
+				0A507EA72279E62F00DF08F6 /* Characters.storyboard in Resources */,
 				0A9111F6220FC39E00CB267A /* .swiftlint.yml in Resources */,
 				0A07F99F2251B887004FE625 /* Action Man Extended Italic.ttf in Resources */,
 				0A07F99D2251B887004FE625 /* Action Man Extended Bold Italic.ttf in Resources */,
-				0A07F98D22519AC8004FE625 /* CharacterCell.xib in Resources */,
 				0A07F9A22251B887004FE625 /* Action Man Shaded Italic.ttf in Resources */,
 				0A07F9A12251B887004FE625 /* Action Man Italic.ttf in Resources */,
 				0A07F99E2251B887004FE625 /* Action Man Extended Bold.ttf in Resources */,
@@ -443,7 +432,6 @@
 				0A07F9A42251B887004FE625 /* Action Man.ttf in Resources */,
 				0A07F99B2251B87F004FE625 /* Action Man Bold Italic.ttf in Resources */,
 				0A07F9A02251B887004FE625 /* Action Man Extended.ttf in Resources */,
-				0ABAC2612207BDEF00C6B792 /* Characters.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,8 +566,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A507EA82279E69400DF08F6 /* CharacterCell.xib in Sources */,
 				0ABAC25E2207BDEF00C6B792 /* CharactersViewController.swift in Sources */,
-				0A9111F92214FD2500CB267A /* CustomImageView.swift in Sources */,
 				0A75DB49226D36FC006A5E3D /* UIViewController.swift in Sources */,
 				0ABAC25C2207BDEF00C6B792 /* AppDelegate.swift in Sources */,
 				0A9BB81F226401C0001D3DF1 /* Dynamic.swift in Sources */,
@@ -631,10 +619,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0ABAC25F2207BDEF00C6B792 /* Characters.storyboard */ = {
+		0A507EA52279E62F00DF08F6 /* Characters.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0ABAC2602207BDEF00C6B792 /* Base */,
+				0A507EA62279E62F00DF08F6 /* Base */,
 			);
 			name = Characters.storyboard;
 			sourceTree = "<group>";

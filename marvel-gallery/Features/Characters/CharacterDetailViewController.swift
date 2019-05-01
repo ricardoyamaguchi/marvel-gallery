@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol CharacterDetailViewControllerDelegate {
+    func didDismissCharacterDetailViewController()
+}
+
 class CharacterDetailViewController: UIViewController {
     
     private let storyboardName: String = "Characters"
@@ -16,6 +20,7 @@ class CharacterDetailViewController: UIViewController {
     @IBOutlet private var charNameLabel: UILabel?
     @IBOutlet private var charDescriptionLabel: UILabel?
     
+    var delegate: CharacterDetailViewControllerDelegate?
     var viewModel: CharacterDetailViewModel?
     var charImage: UIImage?
     var character: Character?
@@ -32,8 +37,26 @@ class CharacterDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addTapGestures()
         bindElements()
         setupData()
+    }
+    
+    // MARK: - Actions
+    
+    @objc
+    private func touchImageView(tapGestureRecognizer: UITapGestureRecognizer) {
+        dismiss(animated: false) {
+            self.delegate?.didDismissCharacterDetailViewController()
+        }
+    }
+    
+    // MARK: - Private methods
+    
+    private func addTapGestures() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(touchImageView(tapGestureRecognizer:)))
+        imageView?.isUserInteractionEnabled = true
+        imageView?.addGestureRecognizer(tap)
     }
     
     private func setupData() {

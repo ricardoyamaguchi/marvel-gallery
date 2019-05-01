@@ -23,7 +23,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="44.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hZ1-Bh-FeP" customClass="CustomImageView" customModule="marvel_gallery" customModuleProvider="target">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hZ1-Bh-FeP">
                         <rect key="frame" x="0.0" y="0.0" width="65" height="45.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="65" id="XZR-6d-Ow4"/>

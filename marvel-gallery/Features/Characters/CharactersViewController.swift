@@ -16,9 +16,11 @@ class CharactersViewController: UIViewController {
 
     private let viewModel = CharactersViewModel()
     private var cachedImages: [String: UIImage] = [:]
+    private var selectedCell: CharacterCell?
+
     var openImageView = UIImageView()
     var openImageViewOrigin = CGPoint()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
@@ -65,6 +67,7 @@ extension CharactersViewController: UITableViewDelegate {
         cell.openCharacterEffect(to: CGPoint(x: x, y: y + 20), size: size) {
             self.pushToDetails(indexPath)
         }
+        selectedCell = cell
     }
 
     private func targetSize() -> CGSize {
@@ -75,6 +78,7 @@ extension CharactersViewController: UITableViewDelegate {
         let details = CharacterDetailViewController.instantiate()
         details.charImage = openImageView.image
         details.character = viewModel.characters[indexPath.row]
+        details.delegate = self
         
         let transition = CATransition()
         transition.duration = 0.3
@@ -98,6 +102,7 @@ extension CharactersViewController: UITableViewDataSource {
         cell.character = viewModel.characters[indexPath.row]
         cell.charImage = nil
         cell.rootContainer = self
+        
         viewModel.fetchImage(index: indexPath.row) { path, data in
             if path == cell.character?.thumbnail?.path {
                 let image = UIImage(data: data)
@@ -112,5 +117,10 @@ extension CharactersViewController: UITableViewDataSource {
 
         return cell
     }
+}
 
+extension CharactersViewController: CharacterDetailViewControllerDelegate {
+    func didDismissCharacterDetailViewController() {
+        selectedCell?.closeCharacterEffect()
+    }
 }

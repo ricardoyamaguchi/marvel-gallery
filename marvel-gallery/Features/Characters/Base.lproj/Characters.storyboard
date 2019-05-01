@@ -114,24 +114,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ol1-B9-td1">
-                                <rect key="frame" x="62.5" y="108" width="250" height="250"/>
+                                <rect key="frame" x="62.5" y="84" width="250" height="250"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="HhG-t7-fQV"/>
                                     <constraint firstAttribute="height" constant="250" id="cnI-bz-dGa"/>
                                 </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="yZ0-Ba-F2A" appends="YES" id="gpo-iU-opd"/>
-                                </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7b-FS-HtK">
-                                <rect key="frame" x="16" y="374" width="343" height="21"/>
+                                <rect key="frame" x="16" y="350" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjy-1s-g51">
-                                <rect key="frame" x="16" y="403" width="343" height="101.5"/>
+                                <rect key="frame" x="16" y="379" width="343" height="101.5"/>
                                 <string key="text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -142,7 +139,7 @@
                         <constraints>
                             <constraint firstItem="DmQ-r7-18I" firstAttribute="trailing" secondItem="Cjy-1s-g51" secondAttribute="trailing" constant="16" id="3Ke-JR-q43"/>
                             <constraint firstItem="DmQ-r7-18I" firstAttribute="trailing" secondItem="s7b-FS-HtK" secondAttribute="trailing" constant="16" id="8W8-8s-sC5"/>
-                            <constraint firstItem="ol1-B9-td1" firstAttribute="top" secondItem="DmQ-r7-18I" secondAttribute="top" constant="44" id="BYv-zp-jj8"/>
+                            <constraint firstItem="ol1-B9-td1" firstAttribute="top" secondItem="DmQ-r7-18I" secondAttribute="top" constant="20" id="C77-Eg-RyA"/>
                             <constraint firstItem="ol1-B9-td1" firstAttribute="centerX" secondItem="DmQ-r7-18I" secondAttribute="centerX" id="L28-S8-DJA"/>
                             <constraint firstItem="Cjy-1s-g51" firstAttribute="top" secondItem="s7b-FS-HtK" secondAttribute="bottom" constant="8" id="OyL-98-amY"/>
                             <constraint firstItem="s7b-FS-HtK" firstAttribute="leading" secondItem="DmQ-r7-18I" secondAttribute="leading" constant="16" id="ckJ-7v-RIX"/>
@@ -159,7 +156,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FzA-JT-U5d" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="yZ0-Ba-F2A"/>
             </objects>
             <point key="canvasLocation" x="1830" y="-564"/>
         </scene>
