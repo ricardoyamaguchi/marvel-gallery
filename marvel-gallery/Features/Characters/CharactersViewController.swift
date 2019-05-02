@@ -15,17 +15,28 @@ class CharactersViewController: UIViewController {
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView?
 
     private let viewModel = CharactersViewModel()
+
     private var cachedImages: [String: UIImage] = [:]
     private var selectedCell: CharacterCell?
+    private var imageTargetSize: CGSize {
+        return CGSize(width: 250.0, height: 250.0)
+    }
+    private var imageTargetPosition: CGPoint {
+        return CGPoint(x: (UIScreen.main.bounds.width / 2) - (imageTargetSize.width / 2),
+                       y: view.safeAreaInsets.top)
+    }
+
 
     var openImageView = UIImageView()
     var openImageViewOrigin = CGPoint()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Characters"
         configTableView()
         bindElements()
         fetchCharacters()
+        configNavigationBar()
     }
 
     private func fetchCharacters() {
@@ -51,6 +62,10 @@ class CharactersViewController: UIViewController {
             self?.updateData()
         }
     }
+    
+    private func configNavigationBar() {
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    }
 
 }
 
@@ -61,17 +76,11 @@ extension CharactersViewController: UITableViewDelegate {
     }
 
     private func push(tableView: UITableView, indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? CharacterCell, let y = navigationController?.navigationBar.frame.size.height else { return }
-        let size = targetSize()
-        let x = (UIScreen.main.bounds.width / 2) - (size.width / 2)
-        cell.openCharacterEffect(to: CGPoint(x: x, y: y + 20), size: size) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? CharacterCell else { return }
+        cell.openCharacterEffect(to: imageTargetPosition, size: imageTargetSize) {
             self.pushToDetails(indexPath)
         }
         selectedCell = cell
-    }
-
-    private func targetSize() -> CGSize {
-        return CGSize(width: 250.0, height: 250.0)
     }
 
     private func pushToDetails(_ indexPath: IndexPath) {

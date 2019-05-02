@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Action Man.ttf">
+            <string>ActionMan</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Characters-->
         <scene sceneID="tne-QT-ifu">
@@ -28,7 +33,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLJ-gG-QV5">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLJ-gG-QV5">
                                         <rect key="frame" x="319" y="0.0" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="2vJ-F1-BWm"/>
@@ -93,12 +98,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="8sw-bI-tTp"/>
+                    <navigationItem key="navigationItem" title="Characters" id="8sw-bI-tTp"/>
                     <connections>
                         <outlet property="activityIndicator" destination="AfE-sd-SaP" id="co2-pL-ePJ"/>
                         <outlet property="loadingView" destination="bph-M1-g3l" id="GlA-Gc-6bc"/>
                         <outlet property="tableView" destination="lfE-3a-B1t" id="pBt-HK-7yo"/>
-                        <segue destination="SHV-u5-iHu" kind="show" id="stf-Gb-egS"/>
+                        <segue destination="SHV-u5-iHu" kind="presentation" identifier="characterDetailSegue" id="stf-Gb-egS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -114,23 +119,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ol1-B9-td1">
-                                <rect key="frame" x="62.5" y="84" width="250" height="250"/>
+                                <rect key="frame" x="62.5" y="64" width="250" height="250"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="HhG-t7-fQV"/>
                                     <constraint firstAttribute="height" constant="250" id="cnI-bz-dGa"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7b-FS-HtK">
-                                <rect key="frame" x="16" y="350" width="343" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="s7b-FS-HtK">
+                                <rect key="frame" x="16" y="330" width="343" height="20"/>
+                                <fontDescription key="fontDescription" name="ActionMan" family="Action Man" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjy-1s-g51">
-                                <rect key="frame" x="16" y="379" width="343" height="101.5"/>
+                                <rect key="frame" x="16" y="366" width="343" height="65.5"/>
                                 <string key="text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="ActionMan" family="Action Man" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -138,12 +143,11 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="DmQ-r7-18I" firstAttribute="trailing" secondItem="Cjy-1s-g51" secondAttribute="trailing" constant="16" id="3Ke-JR-q43"/>
-                            <constraint firstItem="DmQ-r7-18I" firstAttribute="trailing" secondItem="s7b-FS-HtK" secondAttribute="trailing" constant="16" id="8W8-8s-sC5"/>
-                            <constraint firstItem="ol1-B9-td1" firstAttribute="top" secondItem="DmQ-r7-18I" secondAttribute="top" constant="20" id="C77-Eg-RyA"/>
+                            <constraint firstItem="ol1-B9-td1" firstAttribute="top" secondItem="DmQ-r7-18I" secondAttribute="top" constant="44" id="C77-Eg-RyA"/>
                             <constraint firstItem="ol1-B9-td1" firstAttribute="centerX" secondItem="DmQ-r7-18I" secondAttribute="centerX" id="L28-S8-DJA"/>
-                            <constraint firstItem="Cjy-1s-g51" firstAttribute="top" secondItem="s7b-FS-HtK" secondAttribute="bottom" constant="8" id="OyL-98-amY"/>
-                            <constraint firstItem="s7b-FS-HtK" firstAttribute="leading" secondItem="DmQ-r7-18I" secondAttribute="leading" constant="16" id="ckJ-7v-RIX"/>
-                            <constraint firstItem="s7b-FS-HtK" firstAttribute="centerX" secondItem="DmQ-r7-18I" secondAttribute="centerX" id="j7S-1Y-ExZ"/>
+                            <constraint firstItem="Cjy-1s-g51" firstAttribute="top" secondItem="s7b-FS-HtK" secondAttribute="bottom" constant="16" id="OyL-98-amY"/>
+                            <constraint firstItem="DmQ-r7-18I" firstAttribute="trailing" secondItem="s7b-FS-HtK" secondAttribute="trailing" constant="16" id="WvD-GP-MQg"/>
+                            <constraint firstItem="s7b-FS-HtK" firstAttribute="leading" secondItem="DmQ-r7-18I" secondAttribute="leading" constant="16" id="fLq-bf-iuv"/>
                             <constraint firstItem="Cjy-1s-g51" firstAttribute="leading" secondItem="DmQ-r7-18I" secondAttribute="leading" constant="16" id="nWn-li-8mb"/>
                             <constraint firstItem="s7b-FS-HtK" firstAttribute="top" secondItem="ol1-B9-td1" secondAttribute="bottom" constant="16" id="zAu-oy-Ts1"/>
                         </constraints>
@@ -157,7 +161,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FzA-JT-U5d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1830" y="-564"/>
+            <point key="canvasLocation" x="1794" y="-564"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WUI-KD-pck">
@@ -167,7 +171,14 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Gy9-Ue-Mce">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

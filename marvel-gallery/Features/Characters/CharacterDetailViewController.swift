@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CharacterDetailViewControllerDelegate {
+protocol CharacterDetailViewControllerDelegate: class {
     func didDismissCharacterDetailViewController()
 }
 
@@ -20,7 +20,7 @@ class CharacterDetailViewController: UIViewController {
     @IBOutlet private var charNameLabel: UILabel?
     @IBOutlet private var charDescriptionLabel: UILabel?
     
-    var delegate: CharacterDetailViewControllerDelegate?
+    weak var delegate: CharacterDetailViewControllerDelegate?
     var viewModel: CharacterDetailViewModel?
     var charImage: UIImage?
     var character: Character?
@@ -62,7 +62,11 @@ class CharacterDetailViewController: UIViewController {
     private func setupData() {
         imageView?.image = charImage
         charNameLabel?.text = character?.name
-        charDescriptionLabel?.text = character?.description
+        if let description = character?.description, !description.isEmpty {
+            charDescriptionLabel?.text = description
+        } else {
+            charDescriptionLabel?.text = "Description not available"
+        }
     }
     
     private func bindElements() {
