@@ -10,6 +10,10 @@ import Foundation
 import Shimmer
 import UIKit
 
+protocol CharacterCellDelegate: class {
+    func closeCell(_ cell: CharacterCell)
+}
+
 class CharacterCell: UITableViewCell {
 
     private let shimmeringSpeed: CGFloat = 115
@@ -22,6 +26,7 @@ class CharacterCell: UITableViewCell {
     private var path: String = ""
     
     var rootContainer: CharactersViewController?
+    weak var delegate: CharacterCellDelegate?
     
     var character: Character? {
         didSet {
@@ -40,63 +45,28 @@ class CharacterCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         configShimmering()
-    }
-    
-    func openCharacterEffect(to position: CGPoint, size: CGSize, completion: @escaping () -> Void) {
-        let imageView = copyImageView()
-        charImageView?.alpha = 0
-        UIView.animate(withDuration: 0.3, animations: {
-            imageView?.frame = CGRect(x: position.x,
-                                      y: position.y,
-                                      width: size.width,
-                                      height: size.height)
-        }, completion: { _ in
-            completion()
-        })
+        configTapGesture()
     }
     
     @objc
-    func closeCharacterEffect() {
-        guard let targetPosition = rootContainer?.openImageViewOrigin, let size = charImageView?.frame.size else { return }
-        rootContainer?.view.isUserInteractionEnabled = false
-        UIView.animate(withDuration: 0.3, animations: {
-            self.rootContainer?.openImageView.frame = CGRect(x: targetPosition.x,
-                                                             y: targetPosition.y,
-                                                             width: size.width ,
-                                                             height: size.height)
-        }, completion: { _ in
-            self.rootContainer?.view.isUserInteractionEnabled = true
-            self.charImageView?.alpha = 1
-            self.rootContainer?.openImageView.removeFromSuperview()
-        })
+    func close() {
+        delegate?.closeCell(self)
     }
     
-    private func copyImageView() -> UIImageView? {
-        guard let frame = charImageView?.frame else { return nil }
-        let point = findImageAbsPosition()
-        let imageView = UIImageView(frame: CGRect(x: point.x,
-                                                  y: point.y,
-                                                  width: frame.width,
-                                                  height: frame.height))
-        
-        imageView.image = charImageView?.image
-        imageView.isUserInteractionEnabled = true
-        imageView.contentMode = charImageView?.contentMode ?? .scaleAspectFill
-        
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(closeCharacterEffect))
-        imageView.addGestureRecognizer(gesture)
-        rootContainer?.openImageViewOrigin = point
-        rootContainer?.openImageView = imageView
-        rootContainer?.view.addSubview(imageView)
-        
-        return imageView
-    }
-    
-    private func findImageAbsPosition() -> CGPoint {
+    func findImageAbsPosition() -> CGPoint {
         guard let point = charImageView?.bounds.origin else {
             return CGPoint(x: 0, y: 0)
         }
         return contentView.convert(point, to: nil)
+    }
+    
+    func getCharImageView() -> UIImageView? {
+        return charImageView
+    }
+    
+    private func configTapGesture() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(close))
+        charImageView?.addGestureRecognizer(gesture)
     }
     
     private func configShimmering() {

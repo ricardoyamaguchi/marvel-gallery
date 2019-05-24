@@ -22,7 +22,11 @@ class CharacterDetailViewController: UIViewController {
     
     weak var delegate: CharacterDetailViewControllerDelegate?
     var viewModel: CharacterDetailViewModel?
-    var charImage: UIImage?
+    var charImage: UIImage? {
+        didSet {
+            imageView?.image = charImage
+        }
+    }
     var character: Character?
     
     // MARK: - Initializaers
@@ -46,9 +50,9 @@ class CharacterDetailViewController: UIViewController {
     
     @objc
     private func touchImageView(tapGestureRecognizer: UITapGestureRecognizer) {
-        dismiss(animated: false) {
-            self.delegate?.didDismissCharacterDetailViewController()
-        }
+        imageView?.isHidden = true
+        dismiss(animated: true)
+        self.delegate?.didDismissCharacterDetailViewController()
     }
     
     // MARK: - Private methods
@@ -60,7 +64,6 @@ class CharacterDetailViewController: UIViewController {
     }
     
     private func setupData() {
-        imageView?.image = charImage
         charNameLabel?.text = character?.name
         if let description = character?.description, !description.isEmpty {
             charDescriptionLabel?.text = description

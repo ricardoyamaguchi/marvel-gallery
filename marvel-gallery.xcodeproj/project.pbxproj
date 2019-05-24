@@ -20,6 +20,7 @@
 		0A07F9A42251B887004FE625 /* Action Man.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A07F9962251B1C0004FE625 /* Action Man.ttf */; };
 		0A507EA72279E62F00DF08F6 /* Characters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A507EA52279E62F00DF08F6 /* Characters.storyboard */; };
 		0A507EA82279E69400DF08F6 /* CharacterCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = 0A07F98C22519AC8004FE625 /* CharacterCell.xib */; };
+		0A507EAE2288659400DF08F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A507EAD2288659400DF08F6 /* Assets.xcassets */; };
 		0A75DB3F226D2932006A5E3D /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A75DB3E226D2932006A5E3D /* CharacterDetailViewController.swift */; };
 		0A75DB41226D2F7B006A5E3D /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A75DB40226D2F7B006A5E3D /* CharacterDetailViewModel.swift */; };
 		0A75DB45226D32EC006A5E3D /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A75DB44226D32EC006A5E3D /* UIStoryboard.swift */; };
@@ -77,6 +78,7 @@
 		0A07F9992251B1C0004FE625 /* Action Man Extended Bold Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Action Man Extended Bold Italic.ttf"; sourceTree = "<group>"; };
 		0A07F99A2251B1C1004FE625 /* Action Man Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Action Man Bold.ttf"; sourceTree = "<group>"; };
 		0A507EA62279E62F00DF08F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Characters.storyboard; sourceTree = "<group>"; };
+		0A507EAD2288659400DF08F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "marvel-gallery/Assets.xcassets"; sourceTree = "<group>"; };
 		0A75DB3E226D2932006A5E3D /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
 		0A75DB40226D2F7B006A5E3D /* CharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModel.swift; sourceTree = "<group>"; };
 		0A75DB44226D32EC006A5E3D /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 		0ABAC24F2207BDEF00C6B792 = {
 			isa = PBXGroup;
 			children = (
+				0A507EAD2288659400DF08F6 /* Assets.xcassets */,
 				0ABAC25A2207BDEF00C6B792 /* marvel-gallery */,
 				0ABAC26F2207BDF200C6B792 /* marvel-galleryTests */,
 				0ABAC27A2207BDF200C6B792 /* marvel-galleryUITests */,
@@ -419,6 +422,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A507EAE2288659400DF08F6 /* Assets.xcassets in Resources */,
 				0A07F99C2251B882004FE625 /* Action Man Bold.ttf in Resources */,
 				0A507EA72279E62F00DF08F6 /* Characters.storyboard in Resources */,
 				0A9111F6220FC39E00CB267A /* .swiftlint.yml in Resources */,

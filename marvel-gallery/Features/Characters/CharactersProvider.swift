@@ -10,6 +10,10 @@ import Foundation
 
 class CharactersProvider: BaseProvider<Character> {
     
+    override var startsWithFieldName: String {
+        return "name"
+    }
+    
     override var endPoint: String {
         return "/v1/public/characters"
     }

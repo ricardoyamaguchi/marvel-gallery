@@ -22,9 +22,9 @@ class CharactersViewModel {
         return data.value
     }
     
-    func fetchCharacters() {
+    func fetchCharacters(name: String = "") {
         var value = self.data.value
-        charactersProvider.getList(offset: data.value.count) { [weak self] response in
+        charactersProvider.getList(startsWith: name, offset: data.value.count) { [weak self] response in
             guard let results = response?.results, let total = response?.total  else { return }
             value.append(contentsOf: results)
             self?.total = total

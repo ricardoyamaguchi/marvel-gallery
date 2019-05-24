@@ -42,6 +42,9 @@
                                         <state key="normal" title="OK">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="okButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qIi-Ux-1om"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -102,6 +105,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="AfE-sd-SaP" id="co2-pL-ePJ"/>
                         <outlet property="loadingView" destination="bph-M1-g3l" id="GlA-Gc-6bc"/>
+                        <outlet property="searchTextField" destination="Kp7-W9-gb9" id="7gv-eD-StI"/>
                         <outlet property="tableView" destination="lfE-3a-B1t" id="pBt-HK-7yo"/>
                         <segue destination="SHV-u5-iHu" kind="presentation" identifier="characterDetailSegue" id="stf-Gb-egS"/>
                     </connections>

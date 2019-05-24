@@ -14,10 +14,10 @@ class CharactersViewController: UIViewController {
     @IBOutlet private weak var loadingView: UIView?
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView?
 
+    @IBOutlet weak var searchTextField: UITextField?
     private let viewModel = CharactersViewModel()
 
     private var cachedImages: [String: UIImage] = [:]
-    private var selectedCell: CharacterCell?
     private var imageTargetSize: CGSize {
         return CGSize(width: 250.0, height: 250.0)
     }
@@ -26,10 +26,10 @@ class CharactersViewController: UIViewController {
                        y: view.safeAreaInsets.top)
     }
 
-
     var openImageView = UIImageView()
     var openImageViewOrigin = CGPoint()
-    
+    var selectedCell: CharacterCell?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Characters"
@@ -39,10 +39,14 @@ class CharactersViewController: UIViewController {
         configNavigationBar()
     }
 
+    @IBAction func okButtonAction(_ sender: Any) {
+        fetchCharacters()
+    }
+    
     private func fetchCharacters() {
         loadingView?.isHidden = false
         activityIndicator?.startAnimating()
-        viewModel.fetchCharacters()
+        viewModel.fetchCharacters(name: searchTextField?.text ?? "")
     }
 
     private func configTableView() {
@@ -77,15 +81,48 @@ extension CharactersViewController: UITableViewDelegate {
 
     private func push(tableView: UITableView, indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? CharacterCell else { return }
-        cell.openCharacterEffect(to: imageTargetPosition, size: imageTargetSize) {
+        zoomImage(from: cell, to: imageTargetPosition, targetSize: imageTargetSize) {
             self.pushToDetails(indexPath)
         }
         selectedCell = cell
     }
+    
+    func zoomImage(from cell: CharacterCell, to position: CGPoint, targetSize: CGSize, completion: @escaping () -> Void) {
+        let imageView = copyImageView(from: cell)
+        cell.getCharImageView()?.alpha = 0
+        UIView.animate(withDuration: 0.3, animations: {
+            imageView?.frame = CGRect(x: position.x,
+                                      y: position.y,
+                                      width: targetSize.width,
+                                      height: targetSize.height)
+        }, completion: { _ in
+            completion()
+        })
+    }
+
+    private func copyImageView(from cell: CharacterCell) -> UIImageView? {
+        guard let frame = cell.getCharImageView()?.frame else { return nil }
+        let point = cell.findImageAbsPosition()
+        let imageView = UIImageView(frame: CGRect(x: point.x,
+                                                  y: point.y,
+                                                  width: frame.width,
+                                                  height: frame.height))
+        
+        imageView.image = cell.getCharImageView()?.image
+        imageView.isUserInteractionEnabled = true
+        imageView.contentMode = cell.getCharImageView()?.contentMode ?? .scaleAspectFill
+        
+        openImageViewOrigin = point
+        openImageView = imageView
+        
+        let currentWindow: UIWindow? = UIApplication.shared.keyWindow
+        currentWindow?.addSubview(imageView)
+        
+        return imageView
+    }
 
     private func pushToDetails(_ indexPath: IndexPath) {
         let details = CharacterDetailViewController.instantiate()
-        details.charImage = openImageView.image
         details.character = viewModel.characters[indexPath.row]
         details.delegate = self
         
@@ -95,7 +132,10 @@ extension CharactersViewController: UITableViewDelegate {
         transition.subtype = .fromBottom
         
         view.window?.layer.add(transition, forKey: kCATransition)
-        navigationController?.present(details, animated: false)
+        navigationController?.present(details, animated: true) {
+            self.openImageView.isHidden = true
+            details.charImage = self.openImageView.image
+        }
     }
 }
 
@@ -128,8 +168,33 @@ extension CharactersViewController: UITableViewDataSource {
     }
 }
 
+extension CharactersViewController: CharacterCellDelegate {
+    func closeCell(_ cell: CharacterCell) {
+        view.isUserInteractionEnabled = false
+        openImageView.isHidden = false
+        animateCloseCell(cell)
+    }
+    
+    func animateCloseCell(_ cell: CharacterCell) {
+        guard let size = cell.getCharImageView()?.frame.size else { return }
+        UIView.animate(withDuration: 0.3, animations: {
+            self.openImageView.frame = CGRect(x: self.openImageViewOrigin.x,
+                                              y: self.openImageViewOrigin.y,
+                                              width: size.width,
+                                              height: size.height)
+        }, completion: { _ in
+            self.view.isUserInteractionEnabled = true
+            self.openImageView.removeFromSuperview()
+            cell.getCharImageView()?.alpha = 1
+        })
+
+    }
+    
+}
+
 extension CharactersViewController: CharacterDetailViewControllerDelegate {
     func didDismissCharacterDetailViewController() {
-        selectedCell?.closeCharacterEffect()
+        guard let cell = selectedCell else { return }
+        closeCell(cell)
     }
 }
