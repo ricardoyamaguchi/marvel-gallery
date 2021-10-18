@@ -45,7 +45,7 @@ class CharactersViewModel: ObservableObject {
 
     func handleSuccess(_ characters: [Character]?) {
         guard let characters = characters else { return }
-        self.characters = self.characters + characters
+        self.characters.append(contentsOf: characters)
     }
 
 }

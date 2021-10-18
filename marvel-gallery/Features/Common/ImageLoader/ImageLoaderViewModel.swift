@@ -20,13 +20,21 @@ class ImageLoaderViewModel: ObservableObject {
 
     func loadImage(from url: String, size: ImageSize, fileExtension: ImageExtension) {
         loading = true
-        useCase.loadImage(from: url, size: size, fileExtension: fileExtension) { result in
-            self.loading = false
-            switch result {
-            case .success(let data): self.imageData = data
-            default: break
+        useCase.loadImage(
+            from: url,
+            size: size,
+            fileExtension: fileExtension) { [weak self] result in
+
+                self?.loading = false
+
+                switch result {
+                case .success(let data): self?.imageData = data
+                default: break
+                }
+
+                self?.objectWillChange.send()
+
             }
-        }
     }
 
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct CharactersView: View {
 
@@ -70,6 +71,10 @@ private struct BodyView: View {
         GridItem(.fixed(120), alignment: .top)
     ]
 
+    init() {
+        fetchCharactersList()
+    }
+
     var body: some View {
         ZStack(alignment: .center) {
             ScrollView(.vertical, showsIndicators: false) {
@@ -78,21 +83,22 @@ private struct BodyView: View {
                     ForEach(viewModel.characters, id: \.self) { character in
                         ImageCellView(character: character)
                             .onAppear {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                    viewModel.fetchCharactersIfNeeded(currentCharacter: character)
-                                }
+                                viewModel.fetchCharactersIfNeeded(currentCharacter: character)
                             }
                     }
 
                 }
             }
             if viewModel.loading {
-                ActivityIndicator()
+                VStack {
+                    ActivityIndicator()
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.black.opacity(0.3))
             }
-        }.onAppear {
-            fetchCharactersList()
         }
     }
+
     private func fetchCharactersList() {
         viewModel.fetchCharactersList()
     }
@@ -102,14 +108,15 @@ private struct BodyView: View {
 
 private struct ImageCellView: View {
 
-    @ObservedObject private var viewModel = ImageLoaderViewModel()
-
-    @State var image = UIImage()
     @State var height = 4.0
     @State var tapped = false
     @State var alpha = 1.0
 
     var character: Character
+
+    init(character: Character) {
+        self.character = character
+    }
 
     var body: some View {
         VStack {
@@ -121,13 +128,13 @@ private struct ImageCellView: View {
             }
             .hidden()
 
-            Image(uiImage: image)
+            WebImage(url: url())
                 .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 120, height: 120)
-                .onReceive(viewModel.$imageData) { img in
-                    image = UIImage(data: img) ?? UIImage()
-                }
+                .placeholder(
+                    Image(uiImage: UIImage(named: "black-panther") ?? UIImage())
+                )
+                .frame(width: 120, height: 120, alignment: .center)
+
 
             ZStack(alignment: .top) {
                 Rectangle()
@@ -153,13 +160,7 @@ private struct ImageCellView: View {
                 }
 
             }.padding(.top, -8)
-        }
-        .onAppear {
-            viewModel.loadImage(
-                from: character.thumbnail?.path ?? "",
-                size: .standardLarge,
-                fileExtension: .jpg
-            )
+        }.onAppear {
             withAnimation(.spring()) {
                 tapped = false
                 height = 4.0
@@ -177,8 +178,16 @@ private struct ImageCellView: View {
         .frame(height: 200)
         .opacity(alpha)
         .shadow(color: .gray.opacity(0.3), radius: 5.0)
-
     }
+
+    private func url() -> URL? {
+        return URL(string:
+                    String.urlImage(for: character.thumbnail?.path ?? "",
+                                       size: .standardLarge,
+                                       imageExtension: .jpg)
+        )
+    }
+
 }
 
 private struct FooterView: View {
