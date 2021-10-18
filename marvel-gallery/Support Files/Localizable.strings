@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  marvel-gallery
+
+  Created by Ricardo Yamaguchi on 15/10/21.
+  
+*/
+
+// MARK: - Commons
+
+"detailsLabel" = "Details";
+"detailsUnavailable" = "No description available";
+
+// MARK: - Main page
+
+"mainPageTitle" = "MARVEL";
+
+// MARK: - Characters
+
+"charactersTitle" = "CHARACTERS";
+"charactersMessage" = "Get hooked on a hearty helping of heroes and villains from the humble House of Ideas!";
+
+// MARK: - Character details
+
+"characterDetailsAbout" = "About";

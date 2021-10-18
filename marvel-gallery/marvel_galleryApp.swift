@@ -11,7 +11,7 @@ import SwiftUI
 struct marvel_galleryApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CharactersView()
         }
     }
 }
