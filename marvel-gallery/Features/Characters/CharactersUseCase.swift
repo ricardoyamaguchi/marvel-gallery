@@ -19,7 +19,7 @@ enum CharactersUseCaseError {
 }
 
 protocol CharactersUseCaseProtocol {
-    func fetchCharactersList(page: Int, limit: Int, completion: @escaping CharactersUseCaseCompletion)
+    func fetchCharactersList(nameStartsWith: String?, page: Int, limit: Int, completion: @escaping CharactersUseCaseCompletion)
 }
 
 struct CharactersUseCase: CharactersUseCaseProtocol {
@@ -30,8 +30,8 @@ struct CharactersUseCase: CharactersUseCaseProtocol {
         self.service = service
     }
 
-    func fetchCharactersList(page: Int, limit: Int, completion: @escaping CharactersUseCaseCompletion) {
-        service.fetchCharactersList(page: page, limit: limit) { result in
+    func fetchCharactersList(nameStartsWith: String?, page: Int, limit: Int, completion: @escaping CharactersUseCaseCompletion) {
+        service.fetchCharactersList(nameStartsWith: nameStartsWith, page: page, limit: limit) { result in
             switch result {
             case .success(let list):
                 completion(.success(list))

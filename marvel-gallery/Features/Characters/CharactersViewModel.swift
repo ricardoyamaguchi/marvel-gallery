@@ -28,10 +28,10 @@ class CharactersViewModel: ObservableObject {
         fetchCharactersList()
     }
 
-    func fetchCharactersList() {
+    func fetchCharactersList(name: String? = nil) {
         loading = true
 
-        useCase.fetchCharactersList(page: lastLoadedPage * kPageSize, limit: kPageSize) { [weak self] result in
+        useCase.fetchCharactersList(nameStartsWith: name, page: lastLoadedPage * kPageSize, limit: kPageSize) { [weak self] result in
             self?.loading = false
             switch result {
             case .success(let characters): self?.handleSuccess(characters)

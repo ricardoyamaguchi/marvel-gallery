@@ -36,6 +36,15 @@ struct CharactersView: View {
                     .frame(maxWidth: .infinity)
                     .navigationTitle(L10n.charactersTitle.text)
                     .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        Button(action: {
+
+                        }) {
+                            Image(systemName: "magnifyingglass.circle.fill")
+                                .padding(.bottom, 8)
+                        }
+                        .foregroundColor(.gray)
+                    }
 
                 }
 
@@ -66,9 +75,9 @@ private struct BodyView: View {
     @ObservedObject var viewModel = CharactersViewModel()
 
     let columns = [
-        GridItem(.fixed(120), alignment: .top),
-        GridItem(.fixed(120), alignment: .top),
-        GridItem(.fixed(120), alignment: .top)
+        GridItem(.flexible(minimum: 100, maximum: 120), alignment: .top),
+        GridItem(.flexible(minimum: 100, maximum: 120), alignment: .top),
+        GridItem(.flexible(minimum: 100, maximum: 120), alignment: .top)
     ]
 
     init() {
@@ -77,16 +86,27 @@ private struct BodyView: View {
 
     var body: some View {
         ZStack(alignment: .center) {
-            ScrollView(.vertical, showsIndicators: false) {
-                LazyVGrid(columns: columns, spacing: 16) {
+            if viewModel.characters.count == 0, !viewModel.loading {
+                VStack {
+                    Text(L10n.charactersEmptyState.text)
+                        .font(.heeboLight(size: 20.0))
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.gray.opacity(0.3))
+            } else {
+                ScrollView(.vertical, showsIndicators: false) {
+                    LazyVGrid(columns: columns, spacing: 16) {
 
-                    ForEach(viewModel.characters, id: \.self) { character in
-                        ImageCellView(character: character)
-                            .onAppear {
-                                viewModel.fetchCharactersIfNeeded(currentCharacter: character)
-                            }
+                        ForEach(viewModel.characters, id: \.self) { character in
+                            ImageCellView(character: character)
+                                .onAppear {
+                                    viewModel.fetchCharactersIfNeeded(currentCharacter: character)
+                                }
+                        }
+
                     }
-
                 }
             }
             if viewModel.loading {
