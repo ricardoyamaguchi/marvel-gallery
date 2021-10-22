@@ -10,6 +10,6 @@ Interacts with Marvel open API.
 # Usage
 
 ```
-pod instal
+pod install
 ```
 Open the `marvel-gallery.xcworkspace` file.
