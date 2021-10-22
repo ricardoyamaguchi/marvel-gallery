@@ -1,6 +1,11 @@
 # marvel-gallery
 
-Interacts with Marvel open API
+Interacts with Marvel open API.
+
+# Technologies
+
+- SwiftUI
+- Pods: SDWebImageSwiftUI
 
 # Usage
 
