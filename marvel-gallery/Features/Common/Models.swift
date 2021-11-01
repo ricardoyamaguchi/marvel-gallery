@@ -46,17 +46,31 @@ struct Thumbnail: Codable {
 struct Stories: Codable {
     let collectionURI: String?
     let available, returned: Int?
-    let items: [StoriesItem]?
+    let items: [Item]?
 }
 
 // MARK: - StoriesItem
 
-struct StoriesItem: Codable {
-    let resourceURI, name, type: String?
+struct Item: Codable {
+    let resourceURI, name, type, role: String?
 }
 
 // MARK: - TextObject
 
 struct TextObject: Codable {
     let type, language, text: String?
+}
+
+// MARK: - DateElement
+
+struct DateElement: Codable {
+    let type, date: String
+}
+
+// MARK: - Related
+
+struct Related: Codable {
+    let collectionURI: String?
+    let available, returned: Int?
+    let items: [Item]?
 }

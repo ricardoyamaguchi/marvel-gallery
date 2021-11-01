@@ -7,6 +7,7 @@
 
 import XCTest
 
+// swiftlint:disable all
 class marvel_galleryUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {

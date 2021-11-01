@@ -29,7 +29,6 @@ struct CharactersView: View {
                 NavigationView {
 
                     VStack {
-                        HeaderView(message: L10n.charactersMessage.text)
                         BodyView()
                         FooterView()
                     }
@@ -37,9 +36,7 @@ struct CharactersView: View {
                     .navigationTitle(L10n.charactersTitle.text)
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
-                        Button(action: {
-
-                        }) {
+                        Button(action: searchTapped) {
                             Image(systemName: "magnifyingglass.circle.fill")
                                 .padding(.bottom, 8)
                         }
@@ -48,26 +45,15 @@ struct CharactersView: View {
 
                 }
 
-
             }
+
         }
     }
 
-}
-
-private struct HeaderView: View {
-    var message: String
-    var body: some View {
-        VStack {
-
-            Text(message)
-                .font(.heeboLight(size: 16.0))
-                .frame(maxWidth: .infinity, alignment: .center)
-
-        }
-        .padding([.leading, .trailing], 16.0)
+    private func searchTapped() {
 
     }
+
 }
 
 private struct BodyView: View {
@@ -97,6 +83,14 @@ private struct BodyView: View {
                 .background(Color.gray.opacity(0.3))
             } else {
                 ScrollView(.vertical, showsIndicators: false) {
+                    VStack {
+
+                        Text(L10n.charactersMessage.text)
+                            .font(.heeboLight(size: 16.0))
+                            .frame(maxWidth: .infinity, alignment: .center)
+
+                    }
+                    .padding([.leading, .trailing], 16.0)
                     LazyVGrid(columns: columns, spacing: 16) {
 
                         ForEach(viewModel.characters, id: \.self) { character in
@@ -122,7 +116,6 @@ private struct BodyView: View {
     private func fetchCharactersList() {
         viewModel.fetchCharactersList()
     }
-
 
 }
 
@@ -155,7 +148,6 @@ private struct ImageCellView: View {
                 )
                 .frame(width: 120, height: 120, alignment: .center)
 
-
             ZStack(alignment: .top) {
                 Rectangle()
                     .foregroundColor(.black)
@@ -165,7 +157,7 @@ private struct ImageCellView: View {
                     .foregroundColor(.redPigment)
                     .frame(height: height)
 
-                VStack{
+                VStack {
                     Text(character.name?.uppercased() ?? "")
                         .font(.marvelRegular(size: 16))
                         .foregroundColor(.white)
@@ -179,7 +171,8 @@ private struct ImageCellView: View {
 
                 }
 
-            }.padding(.top, -8)
+            }
+            .padding(.top, -8)
         }.onAppear {
             withAnimation(.spring()) {
                 tapped = false

@@ -11,52 +11,64 @@ struct CharacterDetailView: View {
 
     @ObservedObject private var imageLoaderViewModel = ImageLoaderViewModel()
     @State private var image = UIImage()
-    private var viewModel: CharacterDetailViewModel
 
-    init(viewModel: CharacterDetailViewModel) {
-        self.viewModel = viewModel
-    }
+    var viewModel: CharacterDetailViewModel
 
     var body: some View {
         ScrollView {
 
             ZStack {
+
                 Image(uiImage: image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
+                    .frame(maxWidth: .infinity)
                     .onReceive(imageLoaderViewModel.$imageData) { data in
                         image = UIImage(data: data) ?? UIImage()
                     }
                 if imageLoaderViewModel.loading {
                     ActivityIndicator()
                 }
-            }
-
-            VStack {
-
-                Text(L10n.characterDetailsAbout.text.uppercased())
-                    .font(.marvelRegular(size: 24))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding([.leading, .trailing], 16)
-                    .padding(.top, 4)
 
             }
-            .background(Color.gray.opacity(0.2))
-            .frame(maxWidth: .infinity)
+            .frame(height: 220)
 
-            VStack(alignment: .leading) {
-
-                Text(viewModel.getCharacterDescription())
-                    .font(.heeboLight(size: 16))
-
-            }
-            .padding([.leading, .trailing], 16)
-            .padding(.top, 8)
-            .navigationTitle(viewModel.getCharacterName())
+            SectionSeparator(text: L10n.characterDetailsAbout.text.uppercased())
+            AboutView(viewModel: viewModel)
+            SectionSeparator(text: L10n.comicsLabel.text.uppercased())
+            ComicsView()
 
         }.onAppear {
             imageLoaderViewModel.loadImage(from: viewModel.getCharacterThumbnailPath(),
-                                           size: .standardFantastic, fileExtension: .jpg)
+                                           size: .landscapeIncredible, fileExtension: .jpg)
         }
+        .navigationTitle(viewModel.getCharacterName())
     }
+}
+
+private struct AboutView: View {
+
+    var viewModel: CharacterDetailViewModel
+
+    var body: some View {
+
+        VStack(alignment: .leading) {
+
+            SingleLineField(label: L10n.nameLabel.text, text: viewModel.getCharacterName())
+            MultiLineField(label: L10n.descriptionLabel.text, text: viewModel.getCharacterDescription())
+
+        }
+        .padding([.leading, .trailing], 16)
+        .padding(.top, 8)
+
+    }
+
+}
+
+private struct ComicsView: View {
+
+    var body: some View {
+        EmptyView()
+    }
+
 }

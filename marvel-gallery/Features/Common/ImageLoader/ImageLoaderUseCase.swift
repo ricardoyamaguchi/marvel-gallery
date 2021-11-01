@@ -8,7 +8,8 @@
 import Foundation
 
 protocol ImageLoaderUseCaseProtocol {
-    func loadImage(from url: String, size: ImageSize, fileExtension: ImageExtension, completion: @escaping DataCompletion)
+    func loadImage(from url: String, size: ImageSize, fileExtension: ImageExtension,
+                   completion: @escaping DataCompletion)
 }
 
 class ImageLoaderUseCase: ImageLoaderUseCaseProtocol {
@@ -19,7 +20,8 @@ class ImageLoaderUseCase: ImageLoaderUseCaseProtocol {
         self.service = service
     }
 
-    func loadImage(from url: String, size: ImageSize, fileExtension: ImageExtension, completion: @escaping DataCompletion) {
+    func loadImage(from url: String, size: ImageSize, fileExtension: ImageExtension,
+                   completion: @escaping DataCompletion) {
         let urlString = "\(url)/\(size.rawValue).\(fileExtension.rawValue)"
         service.loadImage(for: urlString, completion: completion)
     }

@@ -8,13 +8,15 @@
 import Foundation
 
 protocol CharacterServiceProtocol {
-    func fetchCharactersList(nameStartsWith: String?, page: Int, limit: Int, completion: @escaping Completion<Character>)
+    func fetchCharactersList(nameStartsWith: String?, page: Int, limit: Int,
+                             completion: @escaping Completion<Character>)
 
 }
 
 class CharactersService: BaseService, CharacterServiceProtocol {
 
-    func fetchCharactersList(nameStartsWith: String?, page: Int, limit: Int, completion: @escaping Completion<Character>) {
+    func fetchCharactersList(nameStartsWith: String?, page: Int, limit: Int,
+                             completion: @escaping Completion<Character>) {
         var params = [
             URLQueryItem(name: "offset", value: "\(page)"),
             URLQueryItem(name: "limit", value: "\(limit)")

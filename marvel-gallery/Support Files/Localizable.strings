@@ -8,8 +8,11 @@
 
 // MARK: - Commons
 
+"comicsLabel" = "Comics";
+"descriptionLabel" = "Description";
 "detailsLabel" = "Details";
 "detailsUnavailable" = "No description available";
+"nameLabel" = "Name";
 
 // MARK: - Main page
 

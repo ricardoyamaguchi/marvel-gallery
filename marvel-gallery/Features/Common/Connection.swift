@@ -31,7 +31,10 @@ struct Connection {
     private let kApiKey = "0e3b7a907ce8ed9f13a5264d066221c6"
     private let kHash = "656a105a0efa67531f20de59d5f06e39"
 
-    func request<T: Codable>(method: HttpMethod, endpoint: String, params: [URLQueryItem]?, completion: @escaping Completion<T>) {
+    func request<T: Codable>(method: HttpMethod,
+                             endpoint: String,
+                             params: [URLQueryItem]?,
+                             completion: @escaping Completion<T>) {
 
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
@@ -65,7 +68,7 @@ struct Connection {
                     do {
                         let response = try JSONDecoder().decode(Response<T>.self, from: data)
                         completion(.success(response.data?.results))
-                    } catch(let e) {
+                    } catch {
                         completion(.failure(error))
                     }
                 }
@@ -80,7 +83,7 @@ struct Connection {
 
         guard let url = URL(string: urlString) else { return }
 
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
             guard let data = data else { return }
 
             DispatchQueue.main.async {

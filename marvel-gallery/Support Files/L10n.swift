@@ -11,8 +11,11 @@ enum L10n: String {
 
     // MARK: - Commons
 
-    case detailsLabel,
-         detailsUnavailable
+    case comicsLabel,
+         descriptionLabel,
+         detailsLabel,
+         detailsUnavailable,
+         nameLabel
 
     // MARK: - Main Page
 
@@ -29,5 +32,4 @@ enum L10n: String {
     case characterDetailsAbout
 
     var text: String { NSLocalizedString(rawValue, comment: "") }
-    
 }

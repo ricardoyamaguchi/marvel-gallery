@@ -8,6 +8,7 @@
 import XCTest
 @testable import marvel_gallery
 
+// swiftlint:disable all
 class marvel_galleryTests: XCTestCase {
 
     override func setUpWithError() throws {
