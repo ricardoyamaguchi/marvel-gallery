@@ -11,19 +11,29 @@ struct SimpleSearchBox: View {
 
     @State var label = ""
     @State var placeholder = ""
-    @State var text = ""
+    @Binding var text: String
+    @FocusState var focused: Bool
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .leading, spacing: 8.0) {
             Text(label)
                 .modifier(LabelModifier())
-                .padding()
-            TextField(placeholder, text: $text)
-                .frame(height: 32.0)
-                .background(Color.jet)
-                .cornerRadius(8)
-                .padding()
+            HStack(spacing: 4.0) {
+                TextField(placeholder, text: $text)
+                    .padding(8.0)
+                    .background(Color(uiColor: .systemGray))
+                    .cornerRadius(5.0)
+                    .focused($focused)
+                Button(action: buttonAction) {
+                    Text(L10n.okLabel.text)
+                        .modifier(LabelModifier())
+                        .padding(8.0)
+                }
+                .modifier(ButtonModifier())
+                .foregroundColor(Color(uiColor: .systemGray))
+            }
         }
+        .padding()
         .overlay(
             RoundedRectangle(cornerRadius: 8.0)
                 .stroke(Color(uiColor: .systemGray))
@@ -31,6 +41,13 @@ struct SimpleSearchBox: View {
         .background(.thinMaterial)
         .frame(maxWidth: .infinity)
         .frame(height: 50.0)
+        .onAppear {
+            focused = true
+        }
+    }
+
+    private func buttonAction() {
+
     }
 
 }

@@ -15,7 +15,8 @@ enum L10n: String {
          descriptionLabel,
          detailsLabel,
          detailsUnavailable,
-         nameLabel
+         nameLabel,
+         okLabel
 
     // MARK: - Main Page
 

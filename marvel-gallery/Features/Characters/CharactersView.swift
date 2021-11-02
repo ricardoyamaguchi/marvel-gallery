@@ -10,10 +10,15 @@ import SDWebImageSwiftUI
 
 struct CharactersView: View {
 
+    // MARK: - Private properties
     @State private var isSearching = false
     @State private var searchBoxOpacity = 0.0
+    @State private var searchName: String = ""
+
+    // MARK: - Public properties
     @ObservedObject var viewModel = CharactersViewModel()
 
+    // MARK: - Initializers
     init() {
         UINavigationBar.appearance().tintColor = .gray
         UINavigationBar.appearance().titleTextAttributes = [
@@ -22,6 +27,7 @@ struct CharactersView: View {
         fetchCharactersList()
     }
 
+    // MARK: - Body
     var body: some View {
         ZStack(alignment: .top) {
             VStack {
@@ -49,10 +55,11 @@ struct CharactersView: View {
                         }
                         if isSearching {
                             SimpleSearchBox(label: L10n.charactersSearchLabel.text,
-                                            placeholder: L10n.charactersSearchPlaceholder.text)
+                                            placeholder: L10n.charactersSearchPlaceholder.text,
+                                            text: $searchName)
                                 .frame(maxWidth: .infinity)
                                 .background(Color(uiColor: .systemBackground))
-                                .padding(.top, 35.0)
+                                .padding(.top, 26.0)
                                 .opacity(searchBoxOpacity)
                                 .onAppear {
                                     withAnimation(.easeInOut(duration: 0.3)) {
@@ -71,6 +78,7 @@ struct CharactersView: View {
         }
     }
 
+    // MARK: - Private methods
     private func fetchCharactersList() {
         viewModel.fetchCharactersList()
     }
@@ -81,6 +89,7 @@ struct CharactersView: View {
 
 }
 
+// MARK: - Body View
 private struct BodyView: View {
 
     @ObservedObject var viewModel: CharactersViewModel
@@ -136,6 +145,7 @@ private struct BodyView: View {
 
 }
 
+// MARK: - Image Cell View
 private struct ImageCellView: View {
 
     @State var height = 4.0
@@ -205,7 +215,10 @@ private struct ImageCellView: View {
         }
         .frame(height: 200)
         .opacity(alpha)
-        .shadow(color: .gray, radius: 3, x: 1.0, y: 1.0)
+        .shadow(
+            color: .gray.opacity(0.5),
+            radius: 8, x: 1.0, y: 1.0
+        )
     }
 
     private func url() -> URL? {
