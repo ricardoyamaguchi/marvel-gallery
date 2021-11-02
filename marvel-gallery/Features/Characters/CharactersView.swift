@@ -59,7 +59,7 @@ struct CharactersView: View {
                                             text: $searchName)
                                 .frame(maxWidth: .infinity)
                                 .background(Color(uiColor: .systemBackground))
-                                .padding(.top, 26.0)
+                                .padding(.top, 27.0)
                                 .opacity(searchBoxOpacity)
                                 .onAppear {
                                     withAnimation(.easeInOut(duration: 0.3)) {
