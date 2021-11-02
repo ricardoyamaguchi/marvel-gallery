@@ -25,7 +25,9 @@ enum L10n: String {
 
     case charactersTitle,
          charactersMessage,
-         charactersEmptyState
+         charactersEmptyState,
+         charactersSearchPlaceholder,
+         charactersSearchLabel
 
     // MARK: - Character Detail
 

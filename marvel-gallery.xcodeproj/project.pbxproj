@@ -10,6 +10,8 @@
 		0A0285AF272EEEEC0046CCBF /* ComicsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0285AE272EEEEC0046CCBF /* ComicsService.swift */; };
 		0A0285B1272EF0010046CCBF /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0285B0272EF0010046CCBF /* Comic.swift */; };
 		0A0285B3272F6D400046CCBF /* SimpleSearchBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0285B2272F6D400046CCBF /* SimpleSearchBox.swift */; };
+		0A0285B52730374B0046CCBF /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0285B42730374B0046CCBF /* Modifiers.swift */; };
+		0A0285B8273071710046CCBF /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0285B7273071700046CCBF /* Shapes.swift */; };
 		0A12567227179D950075EF9D /* marvel_galleryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A12567127179D950075EF9D /* marvel_galleryApp.swift */; };
 		0A12567627179D990075EF9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A12567527179D990075EF9D /* Assets.xcassets */; };
 		0A12567927179D990075EF9D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A12567827179D990075EF9D /* Preview Assets.xcassets */; };
@@ -77,6 +79,8 @@
 		0A0285AE272EEEEC0046CCBF /* ComicsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsService.swift; sourceTree = "<group>"; };
 		0A0285B0272EF0010046CCBF /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
 		0A0285B2272F6D400046CCBF /* SimpleSearchBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleSearchBox.swift; sourceTree = "<group>"; };
+		0A0285B42730374B0046CCBF /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		0A0285B7273071700046CCBF /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 		0A12566E27179D950075EF9D /* marvel-gallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "marvel-gallery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A12567127179D950075EF9D /* marvel_galleryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = marvel_galleryApp.swift; sourceTree = "<group>"; };
 		0A12567327179D950075EF9D /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
@@ -179,6 +183,14 @@
 			path = Comics;
 			sourceTree = "<group>";
 		};
+		0A0285B62730381D0046CCBF /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				0A0285B42730374B0046CCBF /* Modifiers.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
 		0A12566527179D950075EF9D = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +260,7 @@
 				0A27FD1D272B9F42008B78AF /* SingleLineField.swift */,
 				0A27FD1F272BA3E3008B78AF /* MultiLineField.swift */,
 				0A0285B2272F6D400046CCBF /* SimpleSearchBox.swift */,
+				0A0285B7273071700046CCBF /* Shapes.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -348,6 +361,7 @@
 		0AA554F7271B779F009F1BF9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0A0285B62730381D0046CCBF /* Modifiers */,
 				0A27FD1A272B9E5E008B78AF /* Components */,
 				0AA84918271D105F0018B2E6 /* ImageLoader */,
 				0A5DF1C0271B293E00C55F25 /* Connection.swift */,
@@ -644,6 +658,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A5DF1A127190C3E00C55F25 /* Font.swift in Sources */,
+				0A0285B52730374B0046CCBF /* Modifiers.swift in Sources */,
 				0A5DF1A5271927F200C55F25 /* UIFont.swift in Sources */,
 				0AA554F6271B7747009F1BF9 /* Character.swift in Sources */,
 				0A27FD20272BA3E3008B78AF /* MultiLineField.swift in Sources */,
@@ -659,6 +674,7 @@
 				0A12567227179D950075EF9D /* marvel_galleryApp.swift in Sources */,
 				0A0285AF272EEEEC0046CCBF /* ComicsService.swift in Sources */,
 				0A5DF18F2718EB6800C55F25 /* Color.swift in Sources */,
+				0A0285B8273071710046CCBF /* Shapes.swift in Sources */,
 				0AA84922271E327F0018B2E6 /* String.swift in Sources */,
 				0A0285B1272EF0010046CCBF /* Comic.swift in Sources */,
 				0AA55504271C001B009F1BF9 /* ImageLoaderService.swift in Sources */,

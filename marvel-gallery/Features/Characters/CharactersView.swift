@@ -10,11 +10,16 @@ import SDWebImageSwiftUI
 
 struct CharactersView: View {
 
+    @State private var isSearching = false
+    @State private var searchBoxOpacity = 0.0
+    @ObservedObject var viewModel = CharactersViewModel()
+
     init() {
         UINavigationBar.appearance().tintColor = .gray
         UINavigationBar.appearance().titleTextAttributes = [
             .font: UIFont.marvelRegular(size: 32.0)
         ]
+        fetchCharactersList()
     }
 
     var body: some View {
@@ -27,48 +32,64 @@ struct CharactersView: View {
                 Spacer()
 
                 NavigationView {
-
-                    VStack {
-                        BodyView()
-                        FooterView()
-                    }
-                    .frame(maxWidth: .infinity)
-                    .navigationTitle(L10n.charactersTitle.text)
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        Button(action: searchTapped) {
-                            Image(systemName: "magnifyingglass.circle.fill")
-                                .padding(.bottom, 8)
+                    ZStack(alignment: .top) {
+                        VStack {
+                            BodyView(viewModel: viewModel)
+                            FooterView()
                         }
-                        .foregroundColor(.gray)
-                    }
+                        .frame(maxWidth: .infinity)
+                        .navigationTitle(L10n.charactersTitle.text)
+                        .navigationBarTitleDisplayMode(.inline)
+                        .toolbar {
+                            Button(action: searchTapped) {
+                                Image(systemName: "magnifyingglass.circle.fill")
+                                    .padding(.bottom, 8)
+                            }
+                            .foregroundColor(.gray)
+                        }
+                        if isSearching {
+                            SimpleSearchBox(label: L10n.charactersSearchLabel.text,
+                                            placeholder: L10n.charactersSearchPlaceholder.text)
+                                .frame(maxWidth: .infinity)
+                                .background(Color(uiColor: .systemBackground))
+                                .padding(.top, 35.0)
+                                .opacity(searchBoxOpacity)
+                                .onAppear {
+                                    withAnimation(.easeInOut(duration: 0.3)) {
+                                        searchBoxOpacity = 1.0
+                                    }
+                                }
+                                .onDisappear {
+                                    searchBoxOpacity = 0.0
+                                }
+                        }
 
+                    }
                 }
 
             }
-
         }
     }
 
-    private func searchTapped() {
+    private func fetchCharactersList() {
+        viewModel.fetchCharactersList()
+    }
 
+    private func searchTapped() {
+        isSearching.toggle()
     }
 
 }
 
 private struct BodyView: View {
 
-    @ObservedObject var viewModel = CharactersViewModel()
+    @ObservedObject var viewModel: CharactersViewModel
 
     let columns = [
         GridItem(.flexible(minimum: 100, maximum: 120), alignment: .top),
         GridItem(.flexible(minimum: 100, maximum: 120), alignment: .top),
         GridItem(.flexible(minimum: 100, maximum: 120), alignment: .top)
     ]
-
-    init() {
-        fetchCharactersList()
-    }
 
     var body: some View {
         ZStack(alignment: .center) {
@@ -113,10 +134,6 @@ private struct BodyView: View {
         }
     }
 
-    private func fetchCharactersList() {
-        viewModel.fetchCharactersList()
-    }
-
 }
 
 private struct ImageCellView: View {
@@ -149,8 +166,9 @@ private struct ImageCellView: View {
                 .frame(width: 120, height: 120, alignment: .center)
 
             ZStack(alignment: .top) {
-                Rectangle()
-                    .foregroundColor(.black)
+
+                MarvelCharShape(cornerHeight: 12.0, cornerWidth: 12.0)
+                    .fill(.black)
                     .frame(height: 80.0)
 
                 Rectangle()
@@ -165,10 +183,7 @@ private struct ImageCellView: View {
                         .frame(maxWidth: .infinity)
                         .background(Color.clear)
                         .multilineTextAlignment(.center)
-
                     Spacer()
-                        .background(Color.clear)
-
                 }
 
             }
@@ -190,7 +205,7 @@ private struct ImageCellView: View {
         }
         .frame(height: 200)
         .opacity(alpha)
-        .shadow(color: .gray.opacity(0.3), radius: 5.0)
+        .shadow(color: .gray, radius: 3, x: 1.0, y: 1.0)
     }
 
     private func url() -> URL? {

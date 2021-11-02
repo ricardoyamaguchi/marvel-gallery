@@ -15,9 +15,9 @@ struct MultiLineField: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(label + ":")
-                .font(.heeboMedium(size: 16))
+                .modifier(LabelModifier())
             Text(text)
-                .font(.heeboLight(size: 16))
+                .modifier(ContentModifier())
         }
     }
 

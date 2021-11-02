@@ -23,6 +23,8 @@
 "charactersTitle" = "CHARACTERS";
 "charactersMessage" = "Get hooked on a hearty helping of heroes and villains from the humble House of Ideas!";
 "charactersEmptyState" = "No characters found";
+"charactersSearchPlaceholder" = "Character name";
+"charactersSearchLabel" = "Search";
 
 // MARK: - Character details
 
