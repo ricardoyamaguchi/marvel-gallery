@@ -14,7 +14,7 @@ Also supports Dark Mode.
 - SwiftUI
 - Pods: SDWebImageSwiftUI
 
-## Pre-requisites
+## Prerequisites
 
 - Xcode 13.1
 - iOS 15.0
