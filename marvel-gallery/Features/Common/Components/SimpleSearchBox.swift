@@ -38,7 +38,10 @@ struct SimpleSearchBox: View {
             RoundedRectangle(cornerRadius: 8.0)
                 .stroke(Color(uiColor: .systemGray))
         )
-        .background(.thinMaterial)
+        .background(
+            RoundedRectangle(cornerRadius: 8.0)
+                .fill(.thinMaterial)
+        )
         .frame(maxWidth: .infinity)
         .frame(height: 50.0)
         .onAppear {

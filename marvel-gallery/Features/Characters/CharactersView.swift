@@ -58,7 +58,6 @@ struct CharactersView: View {
                                             placeholder: L10n.charactersSearchPlaceholder.text,
                                             text: $searchName)
                                 .frame(maxWidth: .infinity)
-                                .background(Color(uiColor: .systemBackground))
                                 .padding(.top, 27.0)
                                 .opacity(searchBoxOpacity)
                                 .onAppear {
