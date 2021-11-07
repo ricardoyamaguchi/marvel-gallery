@@ -34,5 +34,9 @@ enum L10n: String {
 
     case characterDetailsAbout
 
+    // MARK: - Comics
+
+    case comicsTitle
+
     var text: String { NSLocalizedString(rawValue, comment: "") }
 }

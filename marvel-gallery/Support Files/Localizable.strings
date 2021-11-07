@@ -30,3 +30,7 @@
 // MARK: - Character details
 
 "characterDetailsAbout" = "About";
+
+// MARK: - Comics
+
+"comicsTitle" = "COMICS";

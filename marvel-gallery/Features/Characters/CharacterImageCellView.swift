@@ -16,10 +16,6 @@ struct CharacterImageCellView: View {
 
     var character: Character
 
-    init(character: Character) {
-        self.character = character
-    }
-
     var body: some View {
         VStack {
             navigationLink

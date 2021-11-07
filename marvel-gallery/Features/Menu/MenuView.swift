@@ -12,6 +12,7 @@ struct MenuView: View {
     private let charactersBackground = UIImage(named: "characters-background") ?? UIImage()
 
     @State private var openCharacters = false
+    @State private var openComics = false
 
     var body: some View {
         VStack {
@@ -28,12 +29,15 @@ struct MenuView: View {
 
     private var content: some View {
         NavigationView {
-            VStack {
-                charactersArea
-                Spacer()
+            ScrollView {
+                VStack {
+                    charactersArea
+                    comicsArea
+                    Spacer()
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarHidden(true)
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarHidden(true)
         }
     }
 
@@ -41,7 +45,7 @@ struct MenuView: View {
         Group {
             MenuAreaView(
                 imageName: "characters-background",
-                label: "Characters",
+                label: L10n.charactersTitle.text,
                 alignment: .bottomTrailing,
                 action: charactersButtonTap)
 
@@ -51,8 +55,26 @@ struct MenuView: View {
 
     }
 
+    private var comicsArea: some View {
+        Group {
+            MenuAreaView(
+                imageName: "comics-background",
+                label: L10n.comicsTitle.text,
+                alignment: .bottomTrailing,
+                action: comicsButtonTap)
+
+            NavigationLink("", destination: ComicsView(), isActive: $openComics)
+                .hidden()
+        }
+
+    }
+
     private func charactersButtonTap() {
         openCharacters.toggle()
+    }
+
+    private func comicsButtonTap() {
+        openComics.toggle()
     }
 
     init() {

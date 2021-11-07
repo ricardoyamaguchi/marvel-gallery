@@ -16,10 +16,13 @@ struct MenuAreaView: View {
 
     var body: some View {
         ZStack(alignment: alignment) {
-           Image(uiImage: UIImage(named: imageName) ?? UIImage())
+            Image(uiImage: UIImage(named: imageName) ?? UIImage())
                 .resizable()
                 .scaledToFill()
                 .frame(width: UIScreen.main.bounds.width, height: 100)
+                .overlay {
+                    Color.black.opacity(0.6)
+                }
                 .clipped()
 
             MarvelButton(label: label, action: action)
@@ -39,7 +42,7 @@ struct MenuAreaViewPreviews: PreviewProvider {
             }
 
             MenuAreaView(
-                imageName: "characters-background",
+                imageName: "comics-background",
                 label: "Comics",
                 alignment: .bottomLeading) {
 

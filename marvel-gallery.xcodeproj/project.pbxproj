@@ -21,6 +21,7 @@
 		0A27FD1C272B9E72008B78AF /* SectionSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A27FD1B272B9E72008B78AF /* SectionSeparator.swift */; };
 		0A27FD1E272B9F42008B78AF /* SingleLineField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A27FD1D272B9F42008B78AF /* SingleLineField.swift */; };
 		0A27FD20272BA3E3008B78AF /* MultiLineField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A27FD1F272BA3E3008B78AF /* MultiLineField.swift */; };
+		0A30221C27382AAC00BDDEB0 /* ComicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A30221B27382AAB00BDDEB0 /* ComicsView.swift */; };
 		0A5DF18F2718EB6800C55F25 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5DF18E2718EB6800C55F25 /* Color.swift */; };
 		0A5DF198271904B300C55F25 /* Heebo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A5DF191271904B300C55F25 /* Heebo-Light.ttf */; };
 		0A5DF199271904B300C55F25 /* Heebo-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A5DF192271904B300C55F25 /* Heebo-Black.ttf */; };
@@ -98,6 +99,7 @@
 		0A27FD1B272B9E72008B78AF /* SectionSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionSeparator.swift; sourceTree = "<group>"; };
 		0A27FD1D272B9F42008B78AF /* SingleLineField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLineField.swift; sourceTree = "<group>"; };
 		0A27FD1F272BA3E3008B78AF /* MultiLineField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineField.swift; sourceTree = "<group>"; };
+		0A30221B27382AAB00BDDEB0 /* ComicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsView.swift; sourceTree = "<group>"; };
 		0A5DF18E2718EB6800C55F25 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		0A5DF191271904B300C55F25 /* Heebo-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Light.ttf"; sourceTree = "<group>"; };
 		0A5DF192271904B300C55F25 /* Heebo-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Black.ttf"; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			children = (
 				0A0285AE272EEEEC0046CCBF /* ComicsService.swift */,
 				0A0285B0272EF0010046CCBF /* Comic.swift */,
+				0A30221B27382AAB00BDDEB0 /* ComicsView.swift */,
 			);
 			path = Comics;
 			sourceTree = "<group>";
@@ -678,6 +681,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A5DF1A127190C3E00C55F25 /* Font.swift in Sources */,
+				0A30221C27382AAC00BDDEB0 /* ComicsView.swift in Sources */,
 				0A0285B52730374B0046CCBF /* Modifiers.swift in Sources */,
 				0AB9D806273759B000410439 /* CharacterImageCellView.swift in Sources */,
 				0AB9D808273765FF00410439 /* MarvelButton.swift in Sources */,

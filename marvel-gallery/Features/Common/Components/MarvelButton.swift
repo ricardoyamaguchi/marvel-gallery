@@ -21,6 +21,7 @@ struct MarvelButton: View {
                 .frame(height: 48.0)
                 .background(Color.redPigment)
                 .clipShape(MarvelButtonShape(cornerHeight: 16.0, cornerWidth: 16.0))
+                .shadow(color: .black.opacity(0.7), radius: 10, x: 1, y: 1)
         }
     }
 }
