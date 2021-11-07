@@ -51,6 +51,10 @@
 		0AA8491E271DB1C50018B2E6 /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA8491D271DB1C50018B2E6 /* CharacterDetailViewModel.swift */; };
 		0AA84920271DCC6A0018B2E6 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA8491F271DCC6A0018B2E6 /* Array.swift */; };
 		0AA84922271E327F0018B2E6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA84921271E327F0018B2E6 /* String.swift */; };
+		0AB9D804273753F500410439 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB9D803273753F500410439 /* MenuView.swift */; };
+		0AB9D806273759B000410439 /* CharacterImageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB9D805273759B000410439 /* CharacterImageCellView.swift */; };
+		0AB9D808273765FF00410439 /* MarvelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB9D807273765FF00410439 /* MarvelButton.swift */; };
+		0AE635D52738089E002B0727 /* MenuAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE635D42738089E002B0727 /* MenuAreaView.swift */; };
 		1F84C79636375ACCE9604902 /* Pods_marvel_gallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD7847B32F8DAEEF311222E /* Pods_marvel_gallery.framework */; };
 		2461DF2BC67EF2498EE1F2A1 /* Pods_marvel_gallery_marvel_galleryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C957B09AF415FAD3355F46 /* Pods_marvel_gallery_marvel_galleryUITests.framework */; };
 		FE422611243DFC9763D6787A /* Pods_marvel_galleryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44F00EA62762FF569F370A9C /* Pods_marvel_galleryTests.framework */; };
@@ -124,6 +128,10 @@
 		0AA8491D271DB1C50018B2E6 /* CharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModel.swift; sourceTree = "<group>"; };
 		0AA8491F271DCC6A0018B2E6 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		0AA84921271E327F0018B2E6 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		0AB9D803273753F500410439 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		0AB9D805273759B000410439 /* CharacterImageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageCellView.swift; sourceTree = "<group>"; };
+		0AB9D807273765FF00410439 /* MarvelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelButton.swift; sourceTree = "<group>"; };
+		0AE635D42738089E002B0727 /* MenuAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuAreaView.swift; sourceTree = "<group>"; };
 		0D247701985FD8FE6A716162 /* Pods-marvel-galleryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marvel-galleryTests.debug.xcconfig"; path = "Target Support Files/Pods-marvel-galleryTests/Pods-marvel-galleryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1513C809C5F8FEC77DF9FBC8 /* Pods-marvel-gallery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marvel-gallery.release.xcconfig"; path = "Target Support Files/Pods-marvel-gallery/Pods-marvel-gallery.release.xcconfig"; sourceTree = "<group>"; };
 		44F00EA62762FF569F370A9C /* Pods_marvel_galleryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_marvel_galleryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,6 +269,7 @@
 				0A27FD1F272BA3E3008B78AF /* MultiLineField.swift */,
 				0A0285B2272F6D400046CCBF /* SimpleSearchBox.swift */,
 				0A0285B7273071700046CCBF /* Shapes.swift */,
+				0AB9D807273765FF00410439 /* MarvelButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -319,6 +328,7 @@
 				0AA8491D271DB1C50018B2E6 /* CharacterDetailViewModel.swift */,
 				0A5DF1BD271B214A00C55F25 /* CharactersService.swift */,
 				0AA554F5271B7747009F1BF9 /* Character.swift */,
+				0AB9D805273759B000410439 /* CharacterImageCellView.swift */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -326,9 +336,10 @@
 		0A5DF1B8271A3CEC00C55F25 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				0AB9D802273753DD00410439 /* Menu */,
+				0A5DF1B7271A3CDC00C55F25 /* Characters */,
 				0A0285AD272EEED90046CCBF /* Comics */,
 				0AA554F7271B779F009F1BF9 /* Common */,
-				0A5DF1B7271A3CDC00C55F25 /* Characters */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -380,6 +391,15 @@
 				0AA8491B271D10970018B2E6 /* ImageLoaderUseCase.swift */,
 			);
 			path = ImageLoader;
+			sourceTree = "<group>";
+		};
+		0AB9D802273753DD00410439 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				0AB9D803273753F500410439 /* MenuView.swift */,
+				0AE635D42738089E002B0727 /* MenuAreaView.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		4F39ED818CC252EAC4E979E3 /* Frameworks */ = {
@@ -659,6 +679,9 @@
 			files = (
 				0A5DF1A127190C3E00C55F25 /* Font.swift in Sources */,
 				0A0285B52730374B0046CCBF /* Modifiers.swift in Sources */,
+				0AB9D806273759B000410439 /* CharacterImageCellView.swift in Sources */,
+				0AB9D808273765FF00410439 /* MarvelButton.swift in Sources */,
+				0AB9D804273753F500410439 /* MenuView.swift in Sources */,
 				0A5DF1A5271927F200C55F25 /* UIFont.swift in Sources */,
 				0AA554F6271B7747009F1BF9 /* Character.swift in Sources */,
 				0A27FD20272BA3E3008B78AF /* MultiLineField.swift in Sources */,
@@ -668,6 +691,7 @@
 				0AA55508271D0068009F1BF9 /* CharacterDetailView.swift in Sources */,
 				0AA55501271BC9C7009F1BF9 /* CharactersUseCase.swift in Sources */,
 				0A0285B3272F6D400046CCBF /* SimpleSearchBox.swift in Sources */,
+				0AE635D52738089E002B0727 /* MenuAreaView.swift in Sources */,
 				0AA554FE271BBCD7009F1BF9 /* CharactersViewModel.swift in Sources */,
 				0AA84920271DCC6A0018B2E6 /* Array.swift in Sources */,
 				0A27FD1C272B9E72008B78AF /* SectionSeparator.swift in Sources */,
@@ -919,7 +943,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4A723W25N6;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -945,7 +969,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4A723W25N6;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

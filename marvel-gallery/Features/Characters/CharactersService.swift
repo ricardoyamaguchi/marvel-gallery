@@ -24,7 +24,22 @@ class CharactersService: BaseService, CharacterServiceProtocol {
         if let nameStartsWith = nameStartsWith {
             params.append(URLQueryItem(name: "nameStartsWith", value: nameStartsWith))
         }
-        connection.request(method: .get, endpoint: CharactersURL.characters, params: params, completion: completion)
+        connection.request(
+            method: .get,
+            endpoint: CharactersURL.characters,
+            params: params,
+            completion: completion
+        )
+    }
+
+    func fetchComics(by characterId: String, page: Int, limit: Int,
+                     completion: @escaping Completion<Comic>) {
+        connection.request(
+            method: .get,
+            endpoint: CharactersURL.comics.apply(characterId),
+            params: nil,
+            completion: completion
+        )
     }
 
 }
@@ -32,5 +47,6 @@ class CharactersService: BaseService, CharacterServiceProtocol {
 struct CharactersURL {
 
     static let characters = "/characters"
+    static let comics = "/characters/%@/comics"
 
 }

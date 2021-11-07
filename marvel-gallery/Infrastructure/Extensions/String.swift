@@ -13,4 +13,8 @@ extension String {
         return "\(path)/\(size.rawValue).\(imageExtension.rawValue)"
     }
 
+    func apply(_ value: String) -> String {
+        return String(format: self, value)
+    }
+
 }

@@ -8,11 +8,12 @@
 import SwiftUI
 
 // swiftlint:disable all
+
 @main
 struct marvel_galleryApp: App {
     var body: some Scene {
         WindowGroup {
-            CharactersView()
+            MenuView()
         }
     }
 }
