@@ -7,7 +7,16 @@
 
 import Foundation
 
-class CharactersViewModel: ObservableObject {
+protocol CharactersViewModelProtocol: ObservableObject {
+    var characters: [Character] { get set }
+    var error: CharactersUseCaseError? { get set }
+    var loading: Bool { get set }
+    func fetchCharactersIfNeeded(currentCharacter: Character)
+    func fetchCharactersList(name: String?)
+
+}
+
+class CharactersViewModel: CharactersViewModelProtocol {
 
     private let kPageSize = 12
     private var useCase: CharactersUseCaseProtocol

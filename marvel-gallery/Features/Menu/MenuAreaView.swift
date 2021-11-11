@@ -16,37 +16,25 @@ struct MenuAreaView: View {
 
     var body: some View {
         ZStack(alignment: alignment) {
-            Image(uiImage: UIImage(named: imageName) ?? UIImage())
-                .resizable()
-                .scaledToFill()
-                .frame(width: UIScreen.main.bounds.width, height: 100)
-                .overlay {
-                    Color.black.opacity(0.6)
-                }
-                .clipped()
-
-            MarvelButton(label: label, action: action)
-                .padding(4.0)
+            image
+            button
         }
     }
-}
 
-struct MenuAreaViewPreviews: PreviewProvider {
-    static var previews: some View {
-        VStack {
-            MenuAreaView(
-                imageName: "characters-background",
-                label: "Characters",
-                alignment: .bottomTrailing) {
+    private var image: some View {
+        Image(uiImage: UIImage(named: imageName) ?? UIImage())
+            .resizable()
+            .scaledToFill()
+            .frame(
+                width: UIScreen.main.bounds.width,
+                height: 100
+            )
+            .clipped()
+            .opacity(0.6)
+    }
 
-            }
-
-            MenuAreaView(
-                imageName: "comics-background",
-                label: "Comics",
-                alignment: .bottomLeading) {
-
-            }
-        }
+    private var button: some View {
+        MarvelButton(label: label, action: action)
+            .padding(4.0)
     }
 }

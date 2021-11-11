@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CharactersView: View {
+struct CharactersView<ViewModel>: View where ViewModel: CharactersViewModelProtocol {
 
     // MARK: - Private properties
 
@@ -22,7 +22,7 @@ struct CharactersView: View {
 
     // MARK: - Public properties
 
-    @ObservedObject var viewModel = CharactersViewModel()
+    @ObservedObject var viewModel: ViewModel
 
     // MARK: - Body
     var body: some View {
@@ -121,8 +121,9 @@ struct CharactersView: View {
 
     // MARK: - Initializers
 
-    init() {
-        viewModel.fetchCharactersList()
+    init(viewModel: ViewModel) {
+        self.viewModel = viewModel
+        self.viewModel.fetchCharactersList(name: nil)
     }
 
     // MARK: - Private methods

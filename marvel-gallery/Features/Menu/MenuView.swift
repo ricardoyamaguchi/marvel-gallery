@@ -49,10 +49,17 @@ struct MenuView: View {
                 alignment: .bottomTrailing,
                 action: charactersButtonTap)
 
-            NavigationLink("", destination: CharactersView(), isActive: $openCharacters)
+            NavigationLink(
+                "",
+                destination: charactersDestination,
+                isActive: $openCharacters)
                 .hidden()
         }
 
+    }
+
+    private var charactersDestination: some View {
+        CharactersView<CharactersViewModel>(viewModel: CharactersViewModel())
     }
 
     private var comicsArea: some View {
