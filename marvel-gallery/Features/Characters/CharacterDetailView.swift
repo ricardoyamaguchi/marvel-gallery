@@ -9,6 +9,11 @@ import SwiftUI
 
 struct CharacterDetailView: View {
 
+    // Needed to adapt for small devices, according to image proportions (464x261).
+    // This avoids the screen to be resized automatically after loading as the
+    // final screen size is set since its first display.
+    private let proportionalImageHeight = 0.5625 * UIScreen.main.bounds.width
+
     @ObservedObject private var imageLoaderViewModel = ImageLoaderViewModel()
     @State private var image = UIImage()
 
@@ -43,7 +48,8 @@ struct CharacterDetailView: View {
             }
 
         }
-        .frame(height: 220)
+        .frame(height: proportionalImageHeight)
+
     }
 
     private var about: some View {

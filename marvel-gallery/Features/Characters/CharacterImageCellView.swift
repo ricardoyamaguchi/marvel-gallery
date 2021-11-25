@@ -10,9 +10,10 @@ import SDWebImageSwiftUI
 
 struct CharacterImageCellView: View {
 
-    @State var height = 4.0
-    @State var tapped = false
-    @State var opacity = 1.0
+    @State private var separatorHeight = 4.0
+    @State private var tapped = false
+    @State private var opacity = 1.0
+    @State private var callDetails = false
 
     var character: Character
 
@@ -31,7 +32,7 @@ struct CharacterImageCellView: View {
     private var navigationLink: some View {
         NavigationLink(
             destination: CharacterDetailView(viewModel: CharacterDetailViewModel(character: character)),
-            isActive: $tapped) {
+            isActive: $callDetails) {
             EmptyView()
         }
         .hidden()
@@ -44,20 +45,29 @@ struct CharacterImageCellView: View {
                 .placeholder(
                     Image(uiImage: UIImage(named: "black-panther") ?? UIImage())
                 )
-                .frame(width: 120, height: 120)
+                .aspectRatio(contentMode: .fill)
         }
     }
 
     private var footer: some View {
         ZStack(alignment: .top) {
 
-            MarvelCharShape(cornerHeight: 12.0, cornerWidth: 12.0)
-                .fill(.black)
-                .frame(height: 80.0)
+            ZStack(alignment: .top) {
+                Rectangle()
+                    .fill(.black)
+                    .frame(height: 80.0)
 
-            Rectangle()
-                .foregroundColor(.redPigment)
-                .frame(height: height)
+                Rectangle()
+                    .foregroundColor(.redPigment)
+                    .frame(height: separatorHeight)
+
+            }
+            .clipShape(
+                MarvelCharShape(
+                    cornerHeight: 12.0,
+                    cornerWidth: 12.0
+                )
+            )
 
             VStack {
                 Text(character.name?.uppercased() ?? "")
@@ -87,14 +97,14 @@ struct CharacterImageCellView: View {
 
     private func didAppear() {
         withAnimation(.spring()) {
-            height = 4.0
+            separatorHeight = 4.0
         }
     }
 
     private func didTap() {
         withAnimation(.spring()) {
             tapped.toggle()
-            height = tapped ? 80.0 : 4.0
+            separatorHeight = tapped ? 80.0 : 4.0
         }
 
     }

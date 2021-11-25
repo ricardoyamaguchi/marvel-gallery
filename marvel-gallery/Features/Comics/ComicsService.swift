@@ -12,13 +12,20 @@ protocol ComicsServiceProtocol {
                          completion: @escaping Completion<Comic>)
 }
 
-class ComicsService: ComicsServiceProtocol {
+class ComicsService: BaseService, ComicsServiceProtocol {
 
     func fetchComicsList(characterId: String, page: Int, limit: Int,
                          completion: @escaping Completion<Comic>) {
-        var params = [
-            URLQueryItem(name: "", value: characterId)
+        let params = [
+            URLQueryItem(name: "characters", value: characterId)
         ]
+
+        connection.request(
+            method: .get,
+            endpoint: ComicsURL.comics,
+            params: params,
+            completion: completion
+        )
     }
 
 }
