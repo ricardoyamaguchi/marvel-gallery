@@ -18,6 +18,6 @@ jobs:
     - name: Cocoapods
       run: pod install
     - name: Build
-      run: xcodebuild -scheme marvel-gallery build
+      run: xcodebuild -scheme marvel-gallery build -allowProvisioningUpdates
     - name: Run tests
-      run: xcodebuild -scheme marvel-gallery test
+      run: xcodebuild -scheme marvel-gallery test -allowProvisioningUpdates
