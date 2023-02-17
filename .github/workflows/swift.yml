@@ -15,10 +15,8 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - name: Cocoapods
     - uses: NiftyStack/install-cocoapods-action@1.0.0
       run: pod install    
-    - name: Build
     - uses: actions/checkout@v3
       run: swift build -v
     - name: Run tests
