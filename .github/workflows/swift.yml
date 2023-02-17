@@ -1,0 +1,24 @@
+# This workflow will build a Swift project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-swift
+
+name: Swift
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - name: Build
+    - uses: NiftyStack/install-cocoapods-action@1.0.0
+      run: pod install    
+    - uses: actions/checkout@v3
+      run: swift build -v
+    - name: Run tests
+      run: swift test -v
