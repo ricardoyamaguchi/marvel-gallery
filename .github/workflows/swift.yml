@@ -11,13 +11,12 @@ on:
 
 jobs:
   build:
-
     runs-on: macos-latest
 
     steps:
-    - uses: NiftyStack/install-cocoapods-action@1.0.0
-      run: pod install    
-    - uses: actions/checkout@v3
+    - name: Cocoapods
+      run: pod install
+    - name: Build
       run: swift build -v
     - name: Run tests
       run: swift test -v
