@@ -18,6 +18,6 @@ jobs:
     - name: Cocoapods
       run: pod install
     - name: Build
-      run: xcodebuild -workspace marvel-gallery.xcworkspace -scheme "marvel-gallery" -sdk "iphoneos"  build -allowProvisioningUpdates
+      run: xcodebuild -workspace marvel-gallery.xcworkspace -scheme "marvel-gallery" -sdk "iphoneos" build
     - name: Run tests
-      run: xcodebuild -workspace marvel-gallery.xcworkspace -scheme "marvel-gallery" -sdk "iphoneos"  test -allowProvisioningUpdates
+      run: xcodebuild -workspace marvel-gallery.xcworkspace -scheme "marvel-gallery" -sdk "iphoneos" test
